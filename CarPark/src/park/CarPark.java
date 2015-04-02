@@ -58,10 +58,10 @@ public class CarPark {
                 emptySpaceAmount -= 1;
             }
         }
-        // if park is full ,close entrance
+        // if park is full ,close all entrances
         if (emptySpaceAmount == 0) {
             for (Entrance entrance : entrances) {
-                entrance.state = EntranceState.unavailable;
+                entrance.close();
             }
         }
         for (Entrance entrance : entrances) {

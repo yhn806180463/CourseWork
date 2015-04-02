@@ -34,4 +34,6 @@ public abstract class Car<T extends Card> {
         space.state = SpaceState.empty;
         space = null;
     }
+    
+    public abstract float pay();
 }

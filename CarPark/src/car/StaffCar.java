@@ -4,9 +4,9 @@ import card.CampusCard;
 import card.Card;
 
 
-public class StaffCar extends Car<CampusCard> implements Parking {
+public class StaffCar extends Car<CampusCard> {
 
-    public StaffCar(Card card) {
+    public StaffCar(CampusCard card) {
         super(card);
     }
 

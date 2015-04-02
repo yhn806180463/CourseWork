@@ -1,0 +1,7 @@
+question
+
+·"NOT require users to install any extra software or extra Java libraries."
+We need do Junit test.So we need Junit library.
+
+·"University staff can use the car park at any day of the year and they are charged at a flat rate of £1 per day"
+If a staff didn't use car park one day.Did he/she need to pay £1?

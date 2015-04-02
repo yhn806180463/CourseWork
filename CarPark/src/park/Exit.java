@@ -10,8 +10,11 @@ public class Exit {
     public Exit(int id) {
         this.id = id;
     }
-    
-    public void through(Car<Card> car){
-        
+
+    public void through(Car<Card> car) {
+        if (car.card!=null) {
+            System.out.println("open barrier,car "+car.card.id);
+        }
     }
+
 }

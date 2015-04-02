@@ -4,11 +4,11 @@ import card.Card;
 import card.TicketCard;
 
 
-public class PublicCar extends Car<TicketCard> implements Parking {
+public class PublicCar extends Car<TicketCard>{
 
     
     
-    public PublicCar(Card card) {
+    public PublicCar(TicketCard card) {
         super(card);
     }
 
@@ -17,7 +17,9 @@ public class PublicCar extends Car<TicketCard> implements Parking {
      */
     @Override
     public float pay() {
-        // TODO Auto-generated method stub
+        if(enterTime!=null&&leaveTime!=null){
+            long liveTime = leaveTime.getTime()-enterTime.getTime();
+        }
         return 0;
     }
     

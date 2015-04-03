@@ -35,5 +35,5 @@ public abstract class Car<T extends Card> {
         space = null;
     }
     
-    public abstract float pay();
+    public abstract double pay();
 }

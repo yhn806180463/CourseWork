@@ -1,7 +1,6 @@
 package car;
 
 import card.CampusCard;
-import card.Card;
 
 
 public class StaffCar extends Car<CampusCard> {
@@ -14,8 +13,7 @@ public class StaffCar extends Car<CampusCard> {
      * flat pay
      */
     @Override
-    public float pay() {
-        // TODO Auto-generated method stub
-        return 0;
+    public double pay() {
+        return 1;
     }
 }

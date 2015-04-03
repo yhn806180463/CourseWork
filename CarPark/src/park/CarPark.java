@@ -3,7 +3,6 @@ package park;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import State.EntranceState;
 import State.SpaceState;
@@ -17,7 +16,7 @@ public class CarPark {
     private List<Entrance> entrances = new ArrayList<>();
     private List<PayStation> payStations = new ArrayList<>();
     private List<Exit> exits = new ArrayList<>();
-    private int spaceAmount = Integer.valueOf(Config.getProperty("spaces"));
+    private int spaceAmount = Integer.valueOf(Config.getProperty("space"));
     private int entranceAmount = Integer.valueOf(Config.getProperty("entrance"));
     private int payStationAmount = Integer.valueOf(Config.getProperty("paystation"));
     private int exitAmount = Integer.valueOf(Config.getProperty("exit"));

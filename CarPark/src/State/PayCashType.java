@@ -1,11 +1,11 @@
 package State;
 
-public enum PayCash {
+public enum PayCashType {
     FIFTY(0.5), ONE(1), TWO(2);
 
     private double money;
 
-    private PayCash(double money) {
+    private PayCashType(double money) {
         this.money = money;
     }
 

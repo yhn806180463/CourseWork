@@ -1,6 +1,6 @@
 package car;
 
-import State.PayCash;
+import State.PayCashType;
 import card.TicketCard;
 
 public class PublicCar extends Car<TicketCard> {
@@ -9,22 +9,8 @@ public class PublicCar extends Car<TicketCard> {
         super(card);
     }
 
-    /**
-     * pay by time
-     */
-    public void payByCash(PayCash[] cashs) {
-        double alreadyPay = 0;
-        for (PayCash cash : cashs) {
-            alreadyPay += cash.getMoney();
-        }
-        if (alreadyPay >= countCost()) {
-            System.out.println("this car paied." + card.id);
-        }
-    }
-
     @Override
     public double countCost() {
-        unpark();
         long liveTime = leaveTime.getTime() - enterTime.getTime();
         int hour = (int) (liveTime / 60 / 60 / 1000);
         switch (hour / 2) {

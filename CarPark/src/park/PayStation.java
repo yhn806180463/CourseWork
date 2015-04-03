@@ -3,7 +3,7 @@ package park;
 import java.util.HashMap;
 import java.util.Map;
 import State.CarState;
-import State.PayCash;
+import State.PayCashType;
 import car.Car;
 import car.PublicCar;
 import car.StaffCar;
@@ -30,7 +30,7 @@ public class PayStation {
      * @param cashs
      * @return void
      */
-    public void collectPublicCar(PublicCar car, PayCash[] cashs) {
+    public void collectPublicCar(PublicCar car, PayCashType[] cashs) {
       
     }
 

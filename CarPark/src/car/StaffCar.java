@@ -8,8 +8,6 @@ public class StaffCar extends Car<CampusCard> {
         super(card);
     }
 
-    public void payByBill() {}
-
     @Override
     public double countCost() {
         return 1;

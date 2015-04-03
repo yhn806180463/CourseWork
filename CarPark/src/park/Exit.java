@@ -12,9 +12,8 @@ public class Exit {
     }
 
     public void through(Car<Card> car) {
-        if (car.card!=null) {
-            System.out.println("open barrier,car "+car.card.id);
+        if (car.card != null) {
+            System.out.println("open barrier,car " + car.card.id);
         }
     }
-
 }

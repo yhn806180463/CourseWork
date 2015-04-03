@@ -2,8 +2,11 @@ package park;
 
 import java.util.HashMap;
 import java.util.Map;
+import State.CarState;
 import State.PayCash;
 import car.Car;
+import car.PublicCar;
+import car.StaffCar;
 import card.Card;
 
 public class PayStation {
@@ -20,9 +23,16 @@ public class PayStation {
 
     public void through(Car<Card> car) {}
 
-    public void collect(Car<Card> car,PayCash cash){
-        double bill = car.pay();
-        double alreadyPay = payment.get(car.card);
-        
+    /**
+     * Public should pay a list of cash
+     * 
+     * @param car
+     * @param cashs
+     * @return void
+     */
+    public void collectPublicCar(PublicCar car, PayCash[] cashs) {
+      
     }
+
+    public void collectStaffCar(StaffCar car) {}
 }

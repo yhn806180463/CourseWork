@@ -16,6 +16,5 @@ public class Test {
         carPark.parkCar(car);
         Thread.sleep(1000);
         carPark.unparkCar(car);
-       
     }
 }

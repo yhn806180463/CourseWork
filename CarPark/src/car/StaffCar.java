@@ -2,18 +2,16 @@ package car;
 
 import card.CampusCard;
 
-
 public class StaffCar extends Car<CampusCard> {
 
     public StaffCar(CampusCard card) {
         super(card);
     }
 
-    /**
-     * flat pay
-     */
+    public void payByBill() {}
+
     @Override
-    public double pay() {
+    public double countCost() {
         return 1;
     }
 }

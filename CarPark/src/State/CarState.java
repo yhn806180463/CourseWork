@@ -1,6 +1,5 @@
 package State;
 
-
 public enum CarState {
-    park,unpark
+    park, unpark
 }

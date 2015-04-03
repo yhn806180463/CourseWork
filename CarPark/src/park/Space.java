@@ -14,11 +14,11 @@ public class Space {
         this.id = id;
         state = SpaceState.empty;
     }
-    
+
     public void park() {
         state = SpaceState.full;
     }
-    
+
     public void unpark() {
         state = SpaceState.empty;
     }

@@ -1,6 +1,5 @@
 package State;
 
-
 public enum SpaceState {
-    empty,full
+    empty, full
 }

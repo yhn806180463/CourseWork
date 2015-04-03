@@ -7,7 +7,9 @@ import java.util.List;
 import State.EntranceState;
 import State.SpaceState;
 import car.Car;
+import card.CampusCard;
 import card.Card;
+import card.TicketCard;
 import config.Config;
 
 public class CarPark {
@@ -16,10 +18,14 @@ public class CarPark {
     private List<Entrance> entrances = new ArrayList<>();
     private List<PayStation> payStations = new ArrayList<>();
     private List<Exit> exits = new ArrayList<>();
+    private List<TicketCard> ticketCards = new ArrayList<>();
+    private List<CampusCard> campusCards = new ArrayList<>();
     private int spaceAmount = Integer.valueOf(Config.getProperty("space"));
     private int entranceAmount = Integer.valueOf(Config.getProperty("entrance"));
     private int payStationAmount = Integer.valueOf(Config.getProperty("paystation"));
     private int exitAmount = Integer.valueOf(Config.getProperty("exit"));
+    private int ticketCardAmount = Integer.valueOf(Config.getProperty("ticketcard"));
+    private int campusCardAmount = Integer.valueOf(Config.getProperty("campuscard"));
 
     /**
      * construct
@@ -71,30 +77,43 @@ public class CarPark {
             }
         }
     }
-    
+
     /**
      * assign a space to the car
+     * 
      * @param car
      * @return void
      */
-    public void parkCar(Car<Card> car){
+    public void parkCar(Car<Card> car) {
         for (Space space : spaces) {
             if (space.state == SpaceState.empty) {
-                System.out.println("space " + space.id + " park the car "+ car.card.id);
+                System.out.println("space " + space.id + " park the car " + car.card.id);
                 car.park(space);
                 break;
             }
         }
         refreshData();
     }
-    
+
     /**
      * remove the space of the car
+     * 
      * @param car
      * @return void
      */
-    public void unparkCar(Car<Card> car){
+    public void unparkCar(Car<Card> car) {
         car.unpark();
         refreshData();
+    }
+
+    /**
+     * every staff pay bill
+     * 
+     * @return void
+     */
+    public void staffPayBill() {
+        for (CampusCard card : campusCards) {
+            card.payBillByMonth();
+        }
     }
 }

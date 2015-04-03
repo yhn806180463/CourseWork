@@ -10,7 +10,7 @@ public class Test {
 
     public static void main(String[] arg) throws InterruptedException {
         CarPark carPark = new CarPark();
-        Card card = new CampusCard(1);
+        CampusCard card = new CampusCard(1);
         Car car = new StaffCar(card);
         carPark.refreshData();
         carPark.parkCar(car);

@@ -1,8 +1,6 @@
 package card;
 
-import java.util.ArrayList;
-import java.util.List;
-import State.PayCashType;
+import java.util.Date;
 
 public class TicketCard extends Card {
 
@@ -10,17 +8,12 @@ public class TicketCard extends Card {
         super(id);
     }
 
-    /**
-     * owner should pay the cost
-     * 
-     * @param payCash
-     * @return List<Double>
-     */
-    public List<Double> payCoust(List<PayCashType> payCash) {
-        List<Double> pays = new ArrayList<>();
-        for (PayCashType cash : payCash) {
-            pays.add(cash.getMoney());
-        }
-        return pays;
+ 
+
+    @Override
+    public boolean pay(Double money, Date date) {
+        // TODO Auto-generated method stub
+        return false;
     }
+
 }

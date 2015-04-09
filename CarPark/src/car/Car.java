@@ -20,31 +20,37 @@ public abstract class Car<T extends Card> {
         this.state = CarState.unpark;
     }
 
-    public void park(Space space) {
-        enterTime = new Date();
-        System.out.println(enterTime);
-        state = CarState.park;
-        space.state = SpaceState.full;
+    public void park(Space space, Date date) {
+        if (!canPark(date)) {
+            System.out.println("unavailable");
+            return;
+        }
+        this.enterTime = date;
+        this.state = CarState.park;
+        this.space.state = SpaceState.full;
         this.space = space;
     }
 
-    public void unpark() {
-        leaveTime = new Date();
-        System.out.println(leaveTime);
-        state = CarState.unpark;
-        space.state = SpaceState.empty;
-        space = null;
+    public void unpark(Date date) {
+        this.leaveTime = date;
+        this.state = CarState.unpark;
+        this.space.state = SpaceState.empty;
+        this.space = null;
     }
 
-    public void pay(List<Double> moneyList) {
-        double totalMoney = 0;
-        for (double money : moneyList) {
-            totalMoney += money;
-        }
-        if (totalMoney >= countCost()) {
-            System.out.println("already paied " + card.id);
-        }
-    };
 
+    /**
+     * count the cost of the car
+     * 
+     * @return double
+     */
     public abstract double countCost();
+
+    /**
+     * check if it can park
+     * 
+     * @param date
+     * @return boolean
+     */
+    public abstract boolean canPark(Date date);
 }

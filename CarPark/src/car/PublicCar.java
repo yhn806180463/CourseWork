@@ -1,6 +1,6 @@
 package car;
 
-import State.PayCashType;
+import java.util.Date;
 import card.TicketCard;
 
 public class PublicCar extends Car<TicketCard> {
@@ -25,5 +25,14 @@ public class PublicCar extends Car<TicketCard> {
             default:
                 return 5;
         }
+    }
+
+    @Override
+    public boolean canPark(Date date) {
+        int day = date.getDay();
+        if (0 == day || 6 == day) {
+            return true;
+        }
+        return false;
     }
 }

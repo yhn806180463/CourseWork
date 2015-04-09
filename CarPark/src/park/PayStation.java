@@ -1,12 +1,10 @@
 package park;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import State.CarState;
 import State.PayCashType;
-import car.Car;
 import car.PublicCar;
-import car.StaffCar;
 import card.Card;
 
 public class PayStation {
@@ -21,18 +19,16 @@ public class PayStation {
         this.id = id;
     }
 
-    public void through(Car<Card> car) {}
-
     /**
-     * Public should pay a list of cash
      * 
      * @param car
-     * @param cashs
-     * @return void
+     * @param payCash
      */
-    public void collectPublicCar(PublicCar car, PayCashType[] cashs) {
-      
+    public void payCost(PublicCar car, List<PayCashType> payCash) {
+        double pays = 0;
+        for (PayCashType cash : payCash) {
+            pays += cash.getMoney();
+        }
+        car.card.pay(pays, car.leaveTime);
     }
-
-    public void collectStaffCar(StaffCar car) {}
 }

@@ -29,10 +29,16 @@ public class PublicCar extends Car<TicketCard> {
 
     @Override
     public boolean canPark(Date date) {
+        if (card == null) {
+            return false;
+        }
+        @SuppressWarnings("deprecation") 
         int day = date.getDay();
+        // can park in weekend
         if (0 == day || 6 == day) {
             return true;
         }
+        // TODO can park in holiday
         return false;
     }
 }

@@ -1,5 +1,5 @@
 package State;
 
-public enum EntranceState {
+public enum FacilityState {
     available, unavailable
 }

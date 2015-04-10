@@ -1,6 +1,5 @@
 package card;
 
-import java.util.Date;
 
 public class TicketCard extends Card {
 
@@ -8,12 +7,15 @@ public class TicketCard extends Card {
         super(id);
     }
 
- 
-
+    /**
+     * pay by cash,can't change
+     */
     @Override
-    public boolean pay(Double money, Date date) {
-        // TODO Auto-generated method stub
+    public boolean pay(Double bill) {
+        if (bill <= account) {
+            account = 0;
+            return true;
+        }
         return false;
     }
-
 }

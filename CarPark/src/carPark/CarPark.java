@@ -1,16 +1,19 @@
-package park;
+package carPark;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
-import State.EntranceState;
-import State.SpaceState;
+import State.FacilityState;
 import car.Car;
 import card.CampusCard;
 import card.Card;
 import card.TicketCard;
 import config.Config;
+import facility.Entrance;
+import facility.Exit;
+import facility.PayStation;
+import facility.Space;
 
 public class CarPark {
 
@@ -56,10 +59,10 @@ public class CarPark {
         System.out.println("exitAmountTotal:" + exitAmount);
         int emptySpaceAmount = spaceAmount;
         for (Space space : spaces) {
-            if (space.state == SpaceState.empty) {
-                System.out.println("space " + space.id + " is empty");
+            if (space.getState() == FacilityState.available) {
+                System.out.println("space " + space.getId() + " is empty");
             } else {
-                System.out.println("space " + space.id + " is full");
+                System.out.println("space " + space.getId() + " is full");
                 emptySpaceAmount -= 1;
             }
         }
@@ -70,10 +73,10 @@ public class CarPark {
             }
         }
         for (Entrance entrance : entrances) {
-            if (entrance.state == EntranceState.unavailable) {
-                System.out.println("entrance " + entrance.id + " is close");
+            if (entrance.getState() == FacilityState.unavailable) {
+                System.out.println("entrance " + entrance.getId() + " is close");
             } else {
-                System.out.println("entrance " + entrance.id + " is open");
+                System.out.println("entrance " + entrance.getId() + " is open");
             }
         }
     }
@@ -86,8 +89,8 @@ public class CarPark {
      */
     public void parkCar(Car<Card> car) {
         for (Space space : spaces) {
-            if (space.state == SpaceState.empty) {
-                System.out.println("space " + space.id + " park the car " + car.card.id);
+            if (space.getState() == FacilityState.available) {
+                System.out.println("space " + space.getId() + " park the card id " + car.getCard().getId());
                 car.park(space);
                 break;
             }

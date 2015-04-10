@@ -1,43 +1,45 @@
 package car;
 
 import java.util.Date;
-import java.util.List;
-import park.Space;
 import State.CarState;
-import State.SpaceState;
 import card.Card;
+import facility.Space;
 
 public abstract class Car<T extends Card> {
 
-    public Card card;
-    public Space space;
-    public Date enterTime;
-    public Date leaveTime;
-    public CarState state;
+    protected Card card;
+    protected Space space;
+    protected Date enterTime;
+    protected Date leaveTime;
+    protected CarState state;
 
     public Car(Card card) {
         this.card = card;
         this.state = CarState.unpark;
     }
 
-    public void park(Space space, Date date) {
-        if (!canPark(date)) {
-            System.out.println("unavailable");
-            return;
-        }
-        this.enterTime = date;
+    /**
+     * park the car at one space
+     * 
+     * @param space
+     * @return void
+     */
+    public void park(Space space) {
         this.state = CarState.park;
-        this.space.state = SpaceState.full;
         this.space = space;
+        space.close();
     }
 
-    public void unpark(Date date) {
-        this.leaveTime = date;
+    /**
+     * unpark the car from the space
+     * 
+     * @return void
+     */
+    public void unpark() {
         this.state = CarState.unpark;
-        this.space.state = SpaceState.empty;
+        this.space.open();
         this.space = null;
     }
-
 
     /**
      * count the cost of the car
@@ -53,4 +55,54 @@ public abstract class Car<T extends Card> {
      * @return boolean
      */
     public abstract boolean canPark(Date date);
+
+    /**
+     * use card account to pay the cost
+     * 
+     * @return
+     * @return boolean
+     */
+    public boolean payCost() {
+        return card.pay(countCost());
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
+    public Space getSpace() {
+        return space;
+    }
+
+    public void setSpace(Space space) {
+        this.space = space;
+    }
+
+    public Date getEnterTime() {
+        return enterTime;
+    }
+
+    public void setEnterTime(Date enterTime) {
+        this.enterTime = enterTime;
+    }
+
+    public Date getLeaveTime() {
+        return leaveTime;
+    }
+
+    public void setLeaveTime(Date leaveTime) {
+        this.leaveTime = leaveTime;
+    }
+
+    public CarState getState() {
+        return state;
+    }
+
+    public void setState(CarState state) {
+        this.state = state;
+    }
 }

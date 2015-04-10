@@ -1,11 +1,11 @@
 package car;
 
 import java.util.Date;
-import card.TicketCard;
+import card.PublicCard;
 
-public class PublicCar extends Car<TicketCard> {
+public class PublicCar extends Car<PublicCard> {
 
-    public PublicCar(TicketCard card) {
+    public PublicCar(PublicCard card) {
         super(card);
     }
 

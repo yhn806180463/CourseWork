@@ -6,10 +6,8 @@ import card.Card;
 
 public class Exit extends AbstractFacility {
 
-    private int id;
-
     public Exit(int id) {
-        this.id = id;
+        super.id = id;
         open();
     }
 
@@ -26,13 +24,5 @@ public class Exit extends AbstractFacility {
         if (car.payCost()) {
             System.out.println("Exit open barrier,car " + car.getCard().getId());
         } else {}
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }

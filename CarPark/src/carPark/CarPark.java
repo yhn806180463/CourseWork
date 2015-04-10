@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 import State.FacilityState;
 import car.Car;
-import card.CampusCard;
+import card.StaffCard;
 import card.Card;
-import card.TicketCard;
+import card.PublicCard;
 import config.Config;
+import facility.AbstractFacility;
 import facility.Entrance;
 import facility.Exit;
 import facility.PayStation;
@@ -21,8 +22,8 @@ public class CarPark {
     private List<Entrance> entrances = new ArrayList<>();
     private List<PayStation> payStations = new ArrayList<>();
     private List<Exit> exits = new ArrayList<>();
-    private List<TicketCard> ticketCards = new ArrayList<>();
-    private List<CampusCard> campusCards = new ArrayList<>();
+    private List<PublicCard> ticketCards = new ArrayList<>();
+    private List<StaffCard> campusCards = new ArrayList<>();
     private int spaceAmount = Integer.valueOf(Config.getProperty("space"));
     private int entranceAmount = Integer.valueOf(Config.getProperty("entrance"));
     private int payStationAmount = Integer.valueOf(Config.getProperty("paystation"));
@@ -31,7 +32,7 @@ public class CarPark {
     private int campusCardAmount = Integer.valueOf(Config.getProperty("campuscard"));
 
     /**
-     * construct
+     * create spaces, entrance, payStation, exit, ticketCards and campusCards;
      */
     public CarPark() {
         try {
@@ -39,6 +40,8 @@ public class CarPark {
             build(entrances, entranceAmount, Entrance.class);
             build(payStations, payStationAmount, PayStation.class);
             build(exits, exitAmount, Exit.class);
+            build(ticketCards, ticketCardAmount, PublicCard.class);
+            build(campusCards, campusCardAmount, StaffCard.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,32 +56,36 @@ public class CarPark {
     }
 
     public void refreshData() {
-        System.out.println("spaceTotal:" + spaceAmount);
-        System.out.println("entranceTotal:" + entranceAmount);
-        System.out.println("payStationTotal:" + payStationAmount);
-        System.out.println("exitAmountTotal:" + exitAmount);
-        int emptySpaceAmount = spaceAmount;
-        for (Space space : spaces) {
-            if (space.getState() == FacilityState.available) {
-                System.out.println("space " + space.getId() + " is empty");
-            } else {
-                System.out.println("space " + space.getId() + " is full");
-                emptySpaceAmount -= 1;
-            }
-        }
-        // if park is full ,close all entrances
-        if (emptySpaceAmount == 0) {
+        int availableSpaceAmount = checkFacilityAvailable(spaces);
+        if (availableSpaceAmount == 0) {
             for (Entrance entrance : entrances) {
                 entrance.close();
             }
         }
-        for (Entrance entrance : entrances) {
-            if (entrance.getState() == FacilityState.unavailable) {
-                System.out.println("entrance " + entrance.getId() + " is close");
+        int availableEntranceAmount = checkFacilityAvailable(entrances);
+        int availablePayStationAmount = checkFacilityAvailable(payStations);
+        int availableExitAmount = checkFacilityAvailable(exits);
+        System.out.println("Total space:" + spaceAmount + ", available:" + availableSpaceAmount);
+        System.out.println("Total entrance:" + entranceAmount + ", available:" + availableEntranceAmount);
+        System.out.println("Total payStation:" + payStationAmount + ", available:" + availablePayStationAmount);
+        System.out.println("Total exitAmount:" + exitAmount + ", available:" + availableExitAmount);
+        System.out.println("Total ticketCard:" + ticketCardAmount);
+        System.out.println("Total campusCard:" + campusCardAmount);
+        // if park is full ,close all entrances
+    }
+
+    private int checkFacilityAvailable(List<? extends AbstractFacility> facilities) {
+        int availableAmount = facilities.size();
+        for (AbstractFacility facility : facilities) {
+            String facilityName = facility.getClass().getSimpleName() + " id:" + facility.getId();
+            if (facility.getState() == FacilityState.unavailable) {
+                System.out.println(facilityName + " is unavailable");
+                availableAmount -= 1;
             } else {
-                System.out.println("entrance " + entrance.getId() + " is open");
+                System.out.println(facilityName + " is available");
             }
         }
+        return availableAmount;
     }
 
     /**
@@ -115,7 +122,7 @@ public class CarPark {
      * @return void
      */
     public void staffPayBill() {
-        for (CampusCard card : campusCards) {
+        for (StaffCard card : campusCards) {
             card.payBillByMonth();
         }
     }

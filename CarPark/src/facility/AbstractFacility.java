@@ -7,11 +7,8 @@ import State.FacilityState;
  */
 public abstract class AbstractFacility {
 
+    protected int id;
     private FacilityState state;
-
-    public FacilityState getState() {
-        return state;
-    }
 
     /**
      * this facility is available
@@ -29,5 +26,21 @@ public abstract class AbstractFacility {
      */
     public void close() {
         state = FacilityState.unavailable;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public FacilityState getState() {
+        return state;
+    }
+
+    public void setState(FacilityState state) {
+        this.state = state;
     }
 }

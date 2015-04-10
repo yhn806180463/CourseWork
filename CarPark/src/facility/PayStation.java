@@ -9,19 +9,18 @@ import card.Card;
 
 public class PayStation extends AbstractFacility {
 
-    private int id;
     /*
      * use a map to store the payment of car
      */
     public Map<Card, Double> payment = new HashMap<>();
 
     public PayStation(int id) {
-        this.id = id;
+        super.id = id;
         open();
     }
 
     /**
-     * collect cash from public car
+     * collect cash from public car and put it into public card's account
      * 
      * @param car
      * @param payCash
@@ -32,14 +31,6 @@ public class PayStation extends AbstractFacility {
             pays += cash.getMoney();
         }
         car.getCard().setAccount(pays);
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public Map<Card, Double> getPayment() {

@@ -7,11 +7,10 @@ import card.Card;
 
 public class Entrance extends AbstractFacility {
 
-    private int id;
     private FacilityState state;
 
     public Entrance(int id) {
-        this.id = id;
+        super.id = id;
         open();
     }
 
@@ -35,14 +34,6 @@ public class Entrance extends AbstractFacility {
         } else {
             System.out.println("this car can't park,card id: " + car.getCard().getId());
         }
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public FacilityState getState() {

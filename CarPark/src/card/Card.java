@@ -3,7 +3,7 @@ package card;
 public abstract class Card {
 
     protected int id;
-    protected double account;
+    protected double account = 0;
 
     public Card(int id) {
         this.id = id;

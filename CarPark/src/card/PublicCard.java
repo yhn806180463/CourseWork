@@ -1,9 +1,9 @@
 package card;
 
 
-public class TicketCard extends Card {
+public class PublicCard extends Card {
 
-    public TicketCard(int id) {
+    public PublicCard(int id) {
         super(id);
     }
 

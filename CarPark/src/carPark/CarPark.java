@@ -126,4 +126,100 @@ public class CarPark {
             card.payBillByMonth();
         }
     }
+
+    public List<Space> getSpaces() {
+        return spaces;
+    }
+
+    public void setSpaces(List<Space> spaces) {
+        this.spaces = spaces;
+    }
+
+    public List<Entrance> getEntrances() {
+        return entrances;
+    }
+
+    public void setEntrances(List<Entrance> entrances) {
+        this.entrances = entrances;
+    }
+
+    public List<PayStation> getPayStations() {
+        return payStations;
+    }
+
+    public void setPayStations(List<PayStation> payStations) {
+        this.payStations = payStations;
+    }
+
+    public List<Exit> getExits() {
+        return exits;
+    }
+
+    public void setExits(List<Exit> exits) {
+        this.exits = exits;
+    }
+
+    public List<PublicCard> getTicketCards() {
+        return ticketCards;
+    }
+
+    public void setTicketCards(List<PublicCard> ticketCards) {
+        this.ticketCards = ticketCards;
+    }
+
+    public List<StaffCard> getCampusCards() {
+        return campusCards;
+    }
+
+    public void setCampusCards(List<StaffCard> campusCards) {
+        this.campusCards = campusCards;
+    }
+
+    public int getSpaceAmount() {
+        return spaceAmount;
+    }
+
+    public void setSpaceAmount(int spaceAmount) {
+        this.spaceAmount = spaceAmount;
+    }
+
+    public int getEntranceAmount() {
+        return entranceAmount;
+    }
+
+    public void setEntranceAmount(int entranceAmount) {
+        this.entranceAmount = entranceAmount;
+    }
+
+    public int getPayStationAmount() {
+        return payStationAmount;
+    }
+
+    public void setPayStationAmount(int payStationAmount) {
+        this.payStationAmount = payStationAmount;
+    }
+
+    public int getExitAmount() {
+        return exitAmount;
+    }
+
+    public void setExitAmount(int exitAmount) {
+        this.exitAmount = exitAmount;
+    }
+
+    public int getTicketCardAmount() {
+        return ticketCardAmount;
+    }
+
+    public void setTicketCardAmount(int ticketCardAmount) {
+        this.ticketCardAmount = ticketCardAmount;
+    }
+
+    public int getCampusCardAmount() {
+        return campusCardAmount;
+    }
+
+    public void setCampusCardAmount(int campusCardAmount) {
+        this.campusCardAmount = campusCardAmount;
+    }
 }

@@ -1,10 +1,8 @@
 package ui;
 
-import java.awt.Container;
-import java.awt.FlowLayout;
-import javax.swing.JButton;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import carPark.CarPark;
 
 public class CarParkUI extends JFrame {
@@ -13,20 +11,18 @@ public class CarParkUI extends JFrame {
 
     public CarParkUI(CarPark carPark) {
         super();
-        this.setSize(500, 700);
-        
-        Container container = new JPanel();
-        container.setSize(500, 400);
-        container.setLayout(new FlowLayout());
-        container.add(new EntranceUI(carPark.getEntrances()));
-        container.add(new PayStationUI(carPark.getPayStations()));
-        container.add(new ExitUI(carPark.getExits()));
-        
-        this.setLayout(new FlowLayout());
-        this.add(container);
-        this.add(new ControlUI());
-        
-        this.add(new JButton());
+        EntranceUI entranceUI = new EntranceUI(carPark.getEntrances());
+        PayStationUI payStationUI = new PayStationUI(carPark.getPayStations());
+        ExitUI exitUI = new ExitUI(carPark.getExits());
+        ControlUI controlUI = new ControlUI();
+        entranceUI.setPreferredSize(new Dimension(200, 300));
+        payStationUI.setPreferredSize(new Dimension(200, 300));
+        exitUI.setPreferredSize(new Dimension(200, 300));
+        controlUI.setPreferredSize(new Dimension(600, 400));
+        this.add(entranceUI, BorderLayout.WEST);
+        this.add(payStationUI, BorderLayout.CENTER);
+        this.add(exitUI, BorderLayout.EAST);
+        this.add(controlUI, BorderLayout.SOUTH);
         this.setTitle("Car Park");
     }
 }

@@ -1,15 +1,15 @@
 package ui;
 
 import java.util.List;
-import javax.swing.JComponent;
+import javax.swing.JTextArea;
 import facility.Exit;
 
-public class ExitUI extends JComponent {
+public class ExitUI extends JTextArea {
 
     private static final long serialVersionUID = 1L;
 
     public ExitUI(List<Exit> exits) {
         super();
-        this.setSize(100, 200);
+        this.setText("Hello");
     }
 }

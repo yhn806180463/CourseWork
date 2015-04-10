@@ -1,5 +1,6 @@
 package facility;
 
+import javax.swing.JTextArea;
 import State.FacilityState;
 
 /**
@@ -9,6 +10,7 @@ public abstract class AbstractFacility {
 
     protected int id;
     private FacilityState state;
+    protected JTextArea jTextArea;
 
     /**
      * this facility is available

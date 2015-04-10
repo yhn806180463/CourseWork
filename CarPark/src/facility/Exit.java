@@ -1,6 +1,7 @@
 package facility;
 
 import java.util.Date;
+import ui.SingletonModel;
 import car.Car;
 import card.Card;
 
@@ -8,6 +9,7 @@ public class Exit extends AbstractFacility {
 
     public Exit(int id) {
         super.id = id;
+        this.jTextArea = SingletonModel.Exit.getTextArea();
         open();
     }
 

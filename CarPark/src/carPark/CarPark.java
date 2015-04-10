@@ -4,6 +4,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JTextArea;
+import ui.SingletonModel;
 import State.FacilityState;
 import car.Car;
 import card.StaffCard;
@@ -30,6 +32,7 @@ public class CarPark {
     private int exitAmount = Integer.valueOf(Config.getProperty("exit"));
     private int ticketCardAmount = Integer.valueOf(Config.getProperty("ticketcard"));
     private int campusCardAmount = Integer.valueOf(Config.getProperty("campuscard"));
+    private JTextArea textArea = SingletonModel.Control.getTextArea();;
 
     /**
      * create spaces, entrance, payStation, exit, ticketCards and campusCards;
@@ -65,12 +68,12 @@ public class CarPark {
         int availableEntranceAmount = checkFacilityAvailable(entrances);
         int availablePayStationAmount = checkFacilityAvailable(payStations);
         int availableExitAmount = checkFacilityAvailable(exits);
-        System.out.println("Total space:" + spaceAmount + ", available:" + availableSpaceAmount);
-        System.out.println("Total entrance:" + entranceAmount + ", available:" + availableEntranceAmount);
-        System.out.println("Total payStation:" + payStationAmount + ", available:" + availablePayStationAmount);
-        System.out.println("Total exitAmount:" + exitAmount + ", available:" + availableExitAmount);
-        System.out.println("Total ticketCard:" + ticketCardAmount);
-        System.out.println("Total campusCard:" + campusCardAmount);
+        textArea.append("Total space:" + spaceAmount + ", available:" + availableSpaceAmount + "\n");
+        textArea.append("Total entrance:" + entranceAmount + ", available:" + availableEntranceAmount + "\n");
+        textArea.append("Total payStation:" + payStationAmount + ", available:" + availablePayStationAmount + "\n");
+        textArea.append("Total exitAmount:" + exitAmount + ", available:" + availableExitAmount + "\n");
+        textArea.append("Total ticketCard:" + ticketCardAmount);
+        textArea.append("Total campusCard:" + campusCardAmount);
         // if park is full ,close all entrances
     }
 
@@ -79,10 +82,10 @@ public class CarPark {
         for (AbstractFacility facility : facilities) {
             String facilityName = facility.getClass().getSimpleName() + " id:" + facility.getId();
             if (facility.getState() == FacilityState.unavailable) {
-                System.out.println(facilityName + " is unavailable");
+                textArea.append(facilityName + " is unavailable" + "\n");
                 availableAmount -= 1;
             } else {
-                System.out.println(facilityName + " is available");
+                textArea.append(facilityName + " is available" + "\n");
             }
         }
         return availableAmount;
@@ -97,7 +100,7 @@ public class CarPark {
     public void parkCar(Car<Card> car) {
         for (Space space : spaces) {
             if (space.getState() == FacilityState.available) {
-                System.out.println("space " + space.getId() + " park the card id " + car.getCard().getId());
+                textArea.append("space " + space.getId() + " park the card id " + car.getCard().getId() + "\n");
                 car.park(space);
                 break;
             }

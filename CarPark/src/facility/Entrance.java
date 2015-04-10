@@ -1,6 +1,7 @@
 package facility;
 
 import java.util.Date;
+import ui.SingletonModel;
 import State.FacilityState;
 import car.Car;
 import card.Card;
@@ -11,6 +12,7 @@ public class Entrance extends AbstractFacility {
 
     public Entrance(int id) {
         super.id = id;
+        this.jTextArea = SingletonModel.Entrance.getTextArea();
         open();
     }
 

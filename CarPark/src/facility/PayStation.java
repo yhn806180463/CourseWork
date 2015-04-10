@@ -3,6 +3,7 @@ package facility;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import ui.SingletonModel;
 import State.PayCashType;
 import car.PublicCar;
 import card.Card;
@@ -16,6 +17,7 @@ public class PayStation extends AbstractFacility {
 
     public PayStation(int id) {
         super.id = id;
+        this.jTextArea = SingletonModel.PayStation.getTextArea();
         open();
     }
 

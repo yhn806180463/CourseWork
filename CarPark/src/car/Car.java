@@ -1,19 +1,19 @@
 package car;
 
 import java.util.Date;
+import model.Space;
 import State.CarState;
 import card.Card;
-import facility.Space;
 
 public abstract class Car<T extends Card> {
 
-    protected Card card;
+    protected T card;
     protected Space space;
     protected Date enterTime;
     protected Date leaveTime;
     protected CarState state;
 
-    public Car(Card card) {
+    public Car(T card) {
         this.card = card;
         this.state = CarState.unpark;
     }
@@ -66,11 +66,11 @@ public abstract class Car<T extends Card> {
         return card.pay(countCost());
     }
 
-    public Card getCard() {
+    public T getCard() {
         return card;
     }
 
-    public void setCard(Card card) {
+    public void setCard(T card) {
         this.card = card;
     }
 

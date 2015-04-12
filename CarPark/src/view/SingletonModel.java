@@ -1,4 +1,4 @@
-package ui;
+package view;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -10,7 +10,7 @@ import javax.swing.JTextArea;
  * singleton view
  */
 public enum SingletonModel {
-    Entrance("Entrance"), PayStation("PayStation"), Exit("Exit"), Control("Control");
+    Entrance("Entrance"), PayStation("PayStation"), Exit("Exit"), MainControl("Control");
 
     private JScrollPane jScrollPane = new JScrollPane();
     private JTextArea jTextArea = new JTextArea();

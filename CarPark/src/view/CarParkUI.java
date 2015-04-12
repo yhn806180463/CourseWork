@@ -1,10 +1,9 @@
-package ui;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import carPark.CarPark;
 
 public class CarParkUI extends JFrame {
 
@@ -15,7 +14,7 @@ public class CarParkUI extends JFrame {
         JPanel entranceUI = SingletonModel.Entrance.getJPanel();
         JPanel payStationUI = SingletonModel.PayStation.getJPanel();
         JPanel exitUI = SingletonModel.Exit.getJPanel();
-        JPanel controlUI = SingletonModel.Control.getJPanel();
+        JPanel controlUI = SingletonModel.MainControl.getJPanel();
         entranceUI.setPreferredSize(new Dimension(200, 300));
         payStationUI.setPreferredSize(new Dimension(200, 300));
         exitUI.setPreferredSize(new Dimension(200, 300));
@@ -25,7 +24,5 @@ public class CarParkUI extends JFrame {
         this.add(exitUI, BorderLayout.EAST);
         this.add(controlUI, BorderLayout.SOUTH);
         this.setTitle("Car Park");
-        CarPark carPark = new CarPark();
-        carPark.refreshData();
     }
 }

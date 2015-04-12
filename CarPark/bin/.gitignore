@@ -1,7 +1,6 @@
-/State
-/carPark
-/card
-/facility
-/ui
 /car
+/carPark
+/control
+/model
+/view
 /test

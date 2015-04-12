@@ -1,4 +1,4 @@
-package facility;
+package model;
 
 import car.Car;
 import card.Card;

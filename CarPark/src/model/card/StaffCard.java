@@ -26,7 +26,7 @@ public class StaffCard extends Card {
      * @return void
      */
     public void payBillByMonth() {
-        System.out.println("The User " + id + " should pay " + monthBill + " from salary " + account);
+        account -= monthBill;
         monthBill = 0;
         dates.clear();
     }

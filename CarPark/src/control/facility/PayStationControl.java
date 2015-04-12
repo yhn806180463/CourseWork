@@ -18,7 +18,7 @@ public class PayStationControl extends AbstractControl<PayStation> {
     }
 
     @Override
-    public void dealWithCar(PayStation payStation, Car<Card> car) {
+    protected void dealWithCar(PayStation payStation, Car<? extends Card> car) {
         // check only collect Public Car
         if (car.getCard() instanceof PublicCard) {
             payStation.through(car, pays);

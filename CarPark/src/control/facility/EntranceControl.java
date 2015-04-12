@@ -14,7 +14,7 @@ public class EntranceControl extends AbstractControl<Entrance> {
     }
 
     @Override
-    public void dealWithCar(Entrance entrance, Car<Card> car) {
+    protected void dealWithCar(Entrance entrance, Car<? extends Card> car) {
         Date date = new Date();
         // check available of car
         if (entrance.canThrough(car, date)) {

@@ -74,7 +74,7 @@ public abstract class AbstractControl<T extends AbstractFacility> {
         return facilities.size();
     }
 
-    public void through(Car<Card> car) {
+    public void through(Car<? extends Card> car) {
         T facilitiy = getAvailableOne();
         if (facilitiy == null) {
             textShow("none available");
@@ -83,7 +83,7 @@ public abstract class AbstractControl<T extends AbstractFacility> {
         dealWithCar(facilitiy, car);
     }
 
-    public abstract void dealWithCar(T facility, Car<Card> car);
+    protected abstract void dealWithCar(T facility, Car<? extends Card> car);
 
     public void openAll() {
         for (T facility : facilities) {

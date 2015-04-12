@@ -1,6 +1,5 @@
 package model.card;
 
-
 public class PublicCard extends Card {
 
     public PublicCard(int id) {

@@ -13,7 +13,7 @@ public class SpaceControl extends AbstractControl<Space> {
     }
 
     @Override
-    public void dealWithCar(Space space, Car<Card> car) {
+    protected void dealWithCar(Space space, Car<? extends Card> car) {
         car.park(space);
         textShow("car:" + car.getCard().getId() + " park in the space:" + space.getId());
     }

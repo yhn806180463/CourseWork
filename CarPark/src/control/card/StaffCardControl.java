@@ -22,6 +22,7 @@ public class StaffCardControl extends CardControl<StaffCard> {
     public void staffPayBill() {
         for (StaffCard card : cards.values()) {
             card.payBillByMonth();
+            textShow("The card:" + card.getId() + " should pay " + card.getMonthBill());
         }
     }
 }

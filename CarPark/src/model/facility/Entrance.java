@@ -11,7 +11,7 @@ public class Entrance extends AbstractFacility {
         super.id = id;
     }
 
-    public boolean canThrough(Car<Card> car, Date date) {
+    public boolean canThrough(Car<? extends Card> car, Date date) {
         return car.canPark(date);
     }
 

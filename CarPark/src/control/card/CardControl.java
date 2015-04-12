@@ -12,16 +12,21 @@ public class CardControl<T extends Card> {
     protected Map<Integer, T> cards;
     protected JTextArea jTextArea = SingletonModel.MainControl.getTextArea();;
 
-    public boolean registCard(int id, Class<T> t) {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    public boolean registCard(int id, Class t) {
+        boolean sign = true;
+        if(isExist(id)){
+            sign = false;
+        }
         try {
             Constructor<T> constructor = t.getDeclaredConstructor(Integer.class);
             cards.put(id, (T) constructor.newInstance(id));
         } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException
                  | IllegalArgumentException | InvocationTargetException e) {
             e.printStackTrace();
-            return false;
+            sign= false;
         }
-        return true;
+        return sign;
     }
 
     /**

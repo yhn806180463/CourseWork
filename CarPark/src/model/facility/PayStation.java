@@ -15,7 +15,7 @@ public class PayStation extends AbstractFacility {
      * @param car
      * @param payCash
      */
-    public void through(Car<Card> car, double pays) {
+    public void through(Car<? extends Card> car, double pays) {
         car.getCard().setAccount(pays);
     }
 }

@@ -14,7 +14,7 @@ public class ExitControl extends AbstractControl<Exit> {
     }
 
     @Override
-    public void dealWithCar(Exit exit, Car<Card> car) {
+    protected void dealWithCar(Exit exit, Car<? extends Card> car) {
         Date date = new Date();
         car.setLeaveTime(date);
         // check the payment

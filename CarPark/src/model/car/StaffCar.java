@@ -1,7 +1,7 @@
-package car;
+package model.car;
 
 import java.util.Date;
-import card.StaffCard;
+import model.card.StaffCard;
 
 public class StaffCar extends Car<StaffCard> {
 

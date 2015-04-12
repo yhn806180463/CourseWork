@@ -1,4 +1,4 @@
-package model;
+package model.facility;
 
 import state.FacilityState;
 

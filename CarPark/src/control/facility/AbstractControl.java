@@ -1,14 +1,14 @@
-package control;
+package control.facility;
 
 import java.lang.reflect.Constructor;
 import java.util.List;
 import javax.swing.JTextArea;
-import model.AbstractFacility;
+import model.car.Car;
+import model.card.Card;
+import model.facility.AbstractFacility;
 import state.FacilityState;
-import car.Car;
-import card.Card;
 
-public abstract class BaseControl<T extends AbstractFacility> {
+public abstract class AbstractControl<T extends AbstractFacility> {
 
     // the view to show info
     protected JTextArea jTextArea;
@@ -23,7 +23,7 @@ public abstract class BaseControl<T extends AbstractFacility> {
      * @param cla
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    protected BaseControl(JTextArea jTextArea, int amount, Class cla) {
+    protected AbstractControl(JTextArea jTextArea, int amount, Class cla) {
         this.jTextArea = jTextArea;
         try {
             for (int i = 1; i <= amount; i++) {

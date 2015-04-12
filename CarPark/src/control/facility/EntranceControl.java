@@ -1,13 +1,13 @@
-package control;
+package control.facility;
 
 import java.util.Date;
-import model.Entrance;
+import model.car.Car;
+import model.card.Card;
+import model.facility.Entrance;
 import view.SingletonModel;
-import car.Car;
-import card.Card;
 import config.Config;
 
-public class EntranceControl extends BaseControl<Entrance> {
+public class EntranceControl extends AbstractControl<Entrance> {
 
     public EntranceControl() {
         super(SingletonModel.Entrance.getTextArea(), Integer.valueOf(Config.getProperty("entrance")), Entrance.class);

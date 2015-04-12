@@ -1,13 +1,13 @@
-package control;
+package control.facility;
 
 import java.util.Date;
-import model.Exit;
+import model.car.Car;
+import model.card.Card;
+import model.facility.Exit;
 import view.SingletonModel;
-import car.Car;
-import card.Card;
 import config.Config;
 
-public class ExitControl extends BaseControl<Exit> {
+public class ExitControl extends AbstractControl<Exit> {
 
     public ExitControl() {
         super(SingletonModel.Exit.getTextArea(), Integer.valueOf(Config.getProperty("exit")), Exit.class);

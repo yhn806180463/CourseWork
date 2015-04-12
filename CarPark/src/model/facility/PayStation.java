@@ -1,7 +1,7 @@
-package model;
+package model.facility;
 
-import car.Car;
-import card.Card;
+import model.car.Car;
+import model.card.Card;
 
 public class PayStation extends AbstractFacility {
 

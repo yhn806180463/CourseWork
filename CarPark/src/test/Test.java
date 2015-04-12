@@ -2,10 +2,10 @@ package test;
 
 import javax.swing.JFrame;
 import view.CarParkUI;
-import control.EntranceControl;
-import control.ExitControl;
-import control.PayStationControl;
-import control.SpaceControl;
+import control.facility.EntranceControl;
+import control.facility.ExitControl;
+import control.facility.PayStationControl;
+import control.facility.SpaceControl;
 
 public class Test {
 

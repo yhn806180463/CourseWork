@@ -1,12 +1,12 @@
-package control;
+package control.facility;
 
-import model.Space;
+import model.car.Car;
+import model.card.Card;
+import model.facility.Space;
 import view.SingletonModel;
-import car.Car;
-import card.Card;
 import config.Config;
 
-public class SpaceControl extends BaseControl<Space> {
+public class SpaceControl extends AbstractControl<Space> {
 
     public SpaceControl() {
         super(SingletonModel.MainControl.getTextArea(), Integer.valueOf(Config.getProperty("space")), Space.class);

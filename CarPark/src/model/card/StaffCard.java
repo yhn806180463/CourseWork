@@ -1,11 +1,11 @@
-package card;
+package model.card;
 
 import java.util.Date;
 import java.util.HashSet;
 
 public class StaffCard extends Card {
 
-    // the date should pay
+    // the dates should pay
     private HashSet<Date> dates;
     private double monthBill = 0;
 

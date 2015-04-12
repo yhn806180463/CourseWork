@@ -1,15 +1,15 @@
-package control;
+package control.facility;
 
 import java.util.List;
-import model.PayStation;
+import model.car.Car;
+import model.card.Card;
+import model.card.PublicCard;
+import model.facility.PayStation;
 import state.PayCashType;
 import view.SingletonModel;
-import car.Car;
-import card.Card;
-import card.PublicCard;
 import config.Config;
 
-public class PayStationControl extends BaseControl<PayStation> {
+public class PayStationControl extends AbstractControl<PayStation> {
 
     private double pays;
 

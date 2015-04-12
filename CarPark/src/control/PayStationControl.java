@@ -2,8 +2,8 @@ package control;
 
 import java.util.List;
 import model.PayStation;
+import state.PayCashType;
 import view.SingletonModel;
-import State.PayCashType;
 import car.Car;
 import card.Card;
 import card.PublicCard;

@@ -1,4 +1,4 @@
-package State;
+package state;
 
 public enum PayCashType {
     FIFTY(0.5), ONE(1), TWO(2);

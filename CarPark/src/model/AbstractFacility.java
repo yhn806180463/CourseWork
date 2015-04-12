@@ -1,6 +1,6 @@
 package model;
 
-import State.FacilityState;
+import state.FacilityState;
 
 /**
  * 

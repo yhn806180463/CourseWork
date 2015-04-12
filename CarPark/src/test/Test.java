@@ -1,13 +1,11 @@
 package test;
 
 import javax.swing.JFrame;
+import view.CarParkUI;
 import control.EntranceControl;
 import control.ExitControl;
 import control.PayStationControl;
 import control.SpaceControl;
-import model.Entrance;
-import carPark.CarPark;
-import view.CarParkUI;
 
 public class Test {
 

@@ -18,6 +18,16 @@ public abstract class Card {
      */
     public abstract boolean pay(Double bill);
 
+    @Override
+    public boolean equals(Object object) {
+        Card card = (Card) object;
+        if (this.id == card.id) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public int getId() {
         return id;
     }

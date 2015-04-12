@@ -1,8 +1,8 @@
 package car;
 
 import java.util.Date;
+import state.CarState;
 import model.Space;
-import State.CarState;
 import card.Card;
 
 public abstract class Car<T extends Card> {

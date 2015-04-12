@@ -1,9 +1,9 @@
 package model;
 
 import java.util.Date;
+import state.FacilityState;
 import car.Car;
 import card.Card;
-import State.FacilityState;
 
 public class Entrance extends AbstractFacility {
 

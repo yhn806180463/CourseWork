@@ -1,10 +1,10 @@
 package control;
 
 import java.util.Date;
-import car.Car;
-import card.Card;
 import model.Exit;
 import view.SingletonModel;
+import car.Car;
+import card.Card;
 import config.Config;
 
 public class ExitControl extends BaseControl<Exit> {

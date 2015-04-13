@@ -21,7 +21,7 @@ public class PayStationControl extends AbstractControl<PayStation> {
     protected void dealWithCar(PayStation payStation, Car<? extends Card> car) {
         // check only collect Public Car
         if (car.getCard() instanceof PublicCard) {
-            payStation.through(car, pays);
+            payStation.through(pays);
             textShow("card:" + car.getCard().getId() + " account:" + car.getCard().getAccount());
         }
     }

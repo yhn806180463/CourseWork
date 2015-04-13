@@ -1,5 +1,7 @@
 package model.facility;
 
+import model.car.Car;
+import model.card.Card;
 import state.FacilityState;
 
 /**
@@ -27,6 +29,8 @@ public abstract class AbstractFacility {
     public void close() {
         state = FacilityState.unavailable;
     }
+
+    public abstract void deal(Car<? extends Card> car);
 
     public int getId() {
         return id;

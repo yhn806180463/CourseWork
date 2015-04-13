@@ -3,6 +3,7 @@ package model.facility;
 import java.util.Date;
 import model.car.Car;
 import model.card.Card;
+import state.CarState;
 import state.FacilityState;
 
 public class Entrance extends AbstractFacility {
@@ -21,5 +22,11 @@ public class Entrance extends AbstractFacility {
 
     public void setState(FacilityState state) {
         this.state = state;
+    }
+
+    @Override
+    public void deal(Car<? extends Card> car) {
+        car.setEnterTime(new Date());
+        car.setState(CarState.regist);
     }
 }

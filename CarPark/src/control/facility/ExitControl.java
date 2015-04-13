@@ -1,6 +1,5 @@
 package control.facility;
 
-import java.util.Date;
 import model.car.Car;
 import model.card.Card;
 import model.facility.Exit;
@@ -15,8 +14,7 @@ public class ExitControl extends AbstractControl<Exit> {
 
     @Override
     protected void dealWithCar(Exit exit, Car<? extends Card> car) {
-        Date date = new Date();
-        car.setLeaveTime(date);
+        exit.deal(car);
         // check the payment
         if (exit.canThrough(car)) {
             textShow("open barrier,car:" + car.getCard().getId());

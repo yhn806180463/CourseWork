@@ -1,5 +1,5 @@
 package state;
 
 public enum CarState {
-    park, unpark
+    regist, park, unpark, pay, leave
 }

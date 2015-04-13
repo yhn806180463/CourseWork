@@ -18,7 +18,7 @@ public class EntranceControl extends AbstractControl<Entrance> {
         Date date = new Date();
         // check available of car
         if (entrance.canThrough(car, date)) {
-            car.setEnterTime(date);
+            entrance.deal(car);
             textShow("open barrier,car:" + car.getCard().getId());
         } else {
             textShow("this car can't park,card id: " + car.getCard().getId());

@@ -19,29 +19,6 @@ public abstract class Car<T extends Card> {
     }
 
     /**
-     * park the car at one space
-     * 
-     * @param space
-     * @return void
-     */
-    public void park(Space space) {
-        this.state = CarState.park;
-        this.space = space;
-        space.close();
-    }
-
-    /**
-     * unpark the car from the space
-     * 
-     * @return void
-     */
-    public void unpark() {
-        this.state = CarState.unpark;
-        this.space.open();
-        this.space = null;
-    }
-
-    /**
      * count the cost of the car
      * 
      * @return double

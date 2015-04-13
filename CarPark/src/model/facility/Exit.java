@@ -18,4 +18,7 @@ public class Exit extends AbstractFacility {
     public boolean canThrough(Car<? extends Card> car) {
         return car.payCost();
     }
+
+    @Override
+    public void deal(Car<? extends Card> car) {}
 }

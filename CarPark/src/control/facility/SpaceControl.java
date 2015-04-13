@@ -3,6 +3,7 @@ package control.facility;
 import model.car.Car;
 import model.card.Card;
 import model.facility.Space;
+import state.CarState;
 import view.SingletonModel;
 import config.Config;
 
@@ -14,7 +15,9 @@ public class SpaceControl extends AbstractControl<Space> {
 
     @Override
     protected void dealWithCar(Space space, Car<? extends Card> car) {
-        car.park(space);
+        if(car.getState()!=CarState.regist){
+            return;
+        }
         textShow("car:" + car.getCard().getId() + " park in the space:" + space.getId());
     }
 }

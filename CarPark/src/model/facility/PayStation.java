@@ -5,6 +5,8 @@ import model.card.Card;
 
 public class PayStation extends AbstractFacility {
 
+    private double money;
+
     public PayStation(int id) {
         super.id = id;
     }
@@ -15,7 +17,12 @@ public class PayStation extends AbstractFacility {
      * @param car
      * @param payCash
      */
-    public void through(Car<? extends Card> car, double pays) {
-        car.getCard().setAccount(pays);
+    public void through(double money) {
+        this.money = money;
+    }
+
+    @Override
+    public void deal(Car<? extends Card> car) {
+        car.getCard().setAccount(money);
     }
 }

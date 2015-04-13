@@ -1,12 +1,14 @@
 package model.facility;
 
+import state.CarState;
+import state.FacilityState;
 import model.car.Car;
 import model.card.Card;
 
 public class Space extends AbstractFacility {
 
     private int id;
-    private Car<Card> car;
+    private Car<? extends Card> car;
 
     public Space(int id) {
         this.id = id;
@@ -21,11 +23,18 @@ public class Space extends AbstractFacility {
         this.id = id;
     }
 
-    public Car<Card> getCar() {
+    public Car<? extends Card> getCar() {
         return car;
     }
 
     public void setCar(Car<Card> car) {
         this.car = car;
+    }
+
+    @Override
+    public void deal(Car<? extends Card> car) {
+        car.setState(CarState.park);
+        this.car = car;
+        this.state = FacilityState.unavailable;
     }
 }

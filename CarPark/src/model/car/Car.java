@@ -1,14 +1,12 @@
 package model.car;
 
 import java.util.Date;
-import state.CarState;
 import model.card.Card;
-import model.facility.Space;
+import state.CarState;
 
 public abstract class Car<T extends Card> {
 
     protected T card;
-    protected Space space;
     protected Date enterTime;
     protected Date leaveTime;
     protected CarState state;
@@ -39,8 +37,10 @@ public abstract class Car<T extends Card> {
      * @return
      * @return boolean
      */
-    public boolean payCost() {
-        return card.pay(countCost());
+    public void payCost() {
+        if (card.pay(countCost())) {
+            this.state = CarState.pay;
+        }
     }
 
     public T getCard() {
@@ -49,14 +49,6 @@ public abstract class Car<T extends Card> {
 
     public void setCard(T card) {
         this.card = card;
-    }
-
-    public Space getSpace() {
-        return space;
-    }
-
-    public void setSpace(Space space) {
-        this.space = space;
     }
 
     public Date getEnterTime() {

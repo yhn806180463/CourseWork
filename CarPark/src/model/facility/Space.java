@@ -37,4 +37,13 @@ public class Space extends AbstractFacility {
         this.car = car;
         this.state = FacilityState.unavailable;
     }
+
+    @Override
+    public boolean canDeal(Car<? extends Card> car) {
+        if (car.getState() == CarState.regist) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

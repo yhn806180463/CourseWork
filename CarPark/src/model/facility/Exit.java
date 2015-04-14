@@ -1,5 +1,6 @@
 package model.facility;
 
+import state.CarState;
 import model.car.Car;
 import model.card.Card;
 
@@ -9,16 +10,17 @@ public class Exit extends AbstractFacility {
         super.id = id;
     }
 
-    /**
-     * exit park
-     * 
-     * @param car
-     * @return void
-     */
-    public boolean canThrough(Car<? extends Card> car) {
-        return car.payCost();
+    @Override
+    public void deal(Car<? extends Card> car) {
+        car.setState(CarState.leave);
     }
 
     @Override
-    public void deal(Car<? extends Card> car) {}
+    public boolean canDeal(Car<? extends Card> car) {
+        if (car.getState() == CarState.pay) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

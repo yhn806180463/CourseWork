@@ -30,6 +30,8 @@ public abstract class AbstractFacility {
         state = FacilityState.unavailable;
     }
 
+    public abstract boolean canDeal(Car<? extends Card> car);
+
     public abstract void deal(Car<? extends Card> car);
 
     public int getId() {

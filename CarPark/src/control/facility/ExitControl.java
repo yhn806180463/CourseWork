@@ -14,9 +14,9 @@ public class ExitControl extends AbstractControl<Exit> {
 
     @Override
     protected void dealWithCar(Exit exit, Car<? extends Card> car) {
-        exit.deal(car);
         // check the payment
-        if (exit.canThrough(car)) {
+        if (exit.canDeal(car)) {
+            exit.deal(car);
             textShow("open barrier,car:" + car.getCard().getId());
         } else {
             textShow("Can't exit,didn't pay,car " + car.getCard().getId());

@@ -1,5 +1,7 @@
 package model.facility;
 
+import java.util.Date;
+import state.CarState;
 import model.car.Car;
 import model.card.Card;
 
@@ -17,12 +19,24 @@ public class PayStation extends AbstractFacility {
      * @param car
      * @param payCash
      */
-    public void through(double money) {
+    public void collect(double money) {
         this.money = money;
     }
 
     @Override
     public void deal(Car<? extends Card> car) {
         car.getCard().setAccount(money);
+        car.setLeaveTime(new Date());
+        car.setState(CarState.unpark);
+        car.payCost();
+    }
+
+    @Override
+    public boolean canDeal(Car<? extends Card> car) {
+        if (car.getState() == CarState.park) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

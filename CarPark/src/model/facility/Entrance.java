@@ -29,4 +29,9 @@ public class Entrance extends AbstractFacility {
         car.setEnterTime(new Date());
         car.setState(CarState.regist);
     }
+
+    @Override
+    public boolean canDeal(Car<? extends Card> car) {
+        return car.canPark(new Date());
+    }
 }

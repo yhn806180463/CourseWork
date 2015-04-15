@@ -1,7 +1,7 @@
 package model.facility;
 
 import java.util.Date;
-import state.CarState;
+import model.state.CarState;
 import model.car.Car;
 import model.card.Card;
 

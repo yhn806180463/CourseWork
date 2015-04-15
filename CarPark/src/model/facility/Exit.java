@@ -1,6 +1,6 @@
 package model.facility;
 
-import state.CarState;
+import model.state.CarState;
 import model.car.Car;
 import model.card.Card;
 

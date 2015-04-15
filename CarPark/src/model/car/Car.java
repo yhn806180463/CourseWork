@@ -2,7 +2,7 @@ package model.car;
 
 import java.util.Date;
 import model.card.Card;
-import state.CarState;
+import model.state.CarState;
 
 public abstract class Car<T extends Card> {
 

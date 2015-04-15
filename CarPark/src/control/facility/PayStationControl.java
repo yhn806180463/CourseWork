@@ -1,13 +1,13 @@
 package control.facility;
 
 import java.util.List;
+import main.config.Config;
+import main.view.SingletonModel;
 import model.car.Car;
 import model.card.Card;
 import model.card.PublicCard;
 import model.facility.PayStation;
-import state.PayCashType;
-import view.SingletonModel;
-import config.Config;
+import model.state.PayCashType;
 
 public class PayStationControl extends AbstractControl<PayStation> {
 

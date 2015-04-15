@@ -2,7 +2,7 @@ package model.facility;
 
 import model.car.Car;
 import model.card.Card;
-import state.FacilityState;
+import model.state.FacilityState;
 
 /**
  * 

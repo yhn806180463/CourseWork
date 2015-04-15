@@ -1,7 +1,7 @@
 package model.facility;
 
-import state.CarState;
-import state.FacilityState;
+import model.state.CarState;
+import model.state.FacilityState;
 import model.car.Car;
 import model.card.Card;
 

@@ -1,4 +1,4 @@
-package config;
+package main.config;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,7 +10,7 @@ public class Config {
     static {
         Properties props = new Properties();
         try {
-            InputStream in = Config.class.getClassLoader().getResourceAsStream("config/park.properties");
+            InputStream in = Config.class.getClassLoader().getResourceAsStream("main/config/park.properties");
             props.load(in);
         } catch (IOException e) {
             e.printStackTrace();

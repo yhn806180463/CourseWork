@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import javax.swing.JFrame;
+import main.data.CarData;
+import main.view.CarParkUI;
 import model.car.Car;
 import model.car.PublicCar;
 import model.card.Card;
 import model.card.PublicCard;
-import state.PayCashType;
-import view.CarParkUI;
+import model.state.PayCashType;
 import control.card.PublicCardControl;
 import control.card.StaffCardControl;
 import control.facility.EntranceControl;
@@ -19,7 +20,11 @@ import control.facility.SpaceControl;
 
 public class Test {
 
-    public static void main(String[] arg) throws InterruptedException {
+    public static void main(String[] arg) {
+        carDataTest();
+    }
+
+    public static void uiTest(String[] arg) throws InterruptedException {
         //
         CarParkUI ui = new CarParkUI();
         ui.setSize(600, 700);
@@ -46,5 +51,9 @@ public class Test {
         payStationControl.collect(cashs);
         payStationControl.through(car);
         exitControl.through(car);
+    }
+
+    public static void carDataTest() {
+        List<Car<? extends Card>> list = CarData.readCarData();
     }
 }

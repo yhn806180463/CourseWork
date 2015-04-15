@@ -1,7 +1,7 @@
 package control.card;
 
+import main.config.Config;
 import model.card.PublicCard;
-import config.Config;
 
 public class PublicCardControl extends CardControl<PublicCard> {
 

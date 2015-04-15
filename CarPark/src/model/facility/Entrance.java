@@ -3,8 +3,8 @@ package model.facility;
 import java.util.Date;
 import model.car.Car;
 import model.card.Card;
-import state.CarState;
-import state.FacilityState;
+import model.state.CarState;
+import model.state.FacilityState;
 
 public class Entrance extends AbstractFacility {
 

@@ -6,7 +6,7 @@ import javax.swing.JTextArea;
 import model.car.Car;
 import model.card.Card;
 import model.facility.AbstractFacility;
-import state.FacilityState;
+import model.state.FacilityState;
 
 public abstract class AbstractControl<T extends AbstractFacility> {
 
@@ -120,6 +120,7 @@ public abstract class AbstractControl<T extends AbstractFacility> {
      * @return void
      */
     public void showDetail() {
+        textShow("==>Datail");
         textShow("Total amount:" + getTotalAmount());
         textShow("Available amount:" + getAvailableAmount());
         for (T facility : facilities) {
@@ -129,5 +130,6 @@ public abstract class AbstractControl<T extends AbstractFacility> {
                 textShow("The id:" + facility.getId() + " is not available");
             }
         }
+        textShow("<==");
     }
 }

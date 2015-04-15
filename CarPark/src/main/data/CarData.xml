@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Cars>
+	<PublicCar>
+		<CardId>1</CardId>
+		<EnterTime>2015/4/15 16:20:30</EnterTime>
+		<LeaveTime>2015/4/15 16:20:30</LeaveTime>
+	</PublicCar>
+	<StaffCar>
+		<CardId>1</CardId>
+		<Account>2000</Account>
+		<EnterTime>2015/4/15 16:20:30</EnterTime>
+		<LeaveTime>2015/4/15 16:20:30</LeaveTime>
+	</StaffCar>
+</Cars>

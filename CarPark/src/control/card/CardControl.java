@@ -4,8 +4,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 import javax.swing.JTextArea;
+import main.view.SingletonModel;
 import model.card.Card;
-import view.SingletonModel;
 
 public class CardControl<T extends Card> {
 

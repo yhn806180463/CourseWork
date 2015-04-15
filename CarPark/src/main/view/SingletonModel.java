@@ -1,4 +1,4 @@
-package view;
+package main.view;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;

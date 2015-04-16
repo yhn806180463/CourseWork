@@ -12,8 +12,10 @@ public abstract class Car<T extends Card> {
     protected CarState state;
 
     public Car(T card) {
-        this.card = card;
-        this.state = CarState.unpark;
+        if (card != null) {
+            this.card = card;
+            this.state = CarState.regist;
+        }
     }
 
     /**

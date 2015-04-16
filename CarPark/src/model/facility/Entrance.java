@@ -12,10 +12,6 @@ public class Entrance extends AbstractFacility {
         super.id = id;
     }
 
-    public boolean canThrough(Car<? extends Card> car, Date date) {
-        return car.canPark(date);
-    }
-
     public FacilityState getState() {
         return state;
     }
@@ -27,11 +23,11 @@ public class Entrance extends AbstractFacility {
     @Override
     public void deal(Car<? extends Card> car) {
         car.setEnterTime(new Date());
-        car.setState(CarState.regist);
+        car.setState(CarState.enter);
     }
 
     @Override
     public boolean canDeal(Car<? extends Card> car) {
-        return car.canPark(new Date());
+        return car.canPark(new Date()) && car.getState() == CarState.regist;
     }
 }

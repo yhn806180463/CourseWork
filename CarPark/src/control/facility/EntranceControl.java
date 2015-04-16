@@ -1,6 +1,5 @@
 package control.facility;
 
-import java.util.Date;
 import main.config.Config;
 import main.view.SingletonModel;
 import model.car.Car;
@@ -15,9 +14,8 @@ public class EntranceControl extends AbstractControl<Entrance> {
 
     @Override
     protected void dealWithCar(Entrance entrance, Car<? extends Card> car) {
-        Date date = new Date();
         // check available of car
-        if (entrance.canThrough(car, date)) {
+        if (entrance.canDeal(car)) {
             entrance.deal(car);
             textShow("Entrance open barrier,car:" + car.getCard().getId());
         } else {

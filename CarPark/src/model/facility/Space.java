@@ -40,7 +40,7 @@ public class Space extends AbstractFacility {
 
     @Override
     public boolean canDeal(Car<? extends Card> car) {
-        if (car.getState() == CarState.regist) {
+        if (car.getState() == CarState.enter) {
             return true;
         } else {
             return false;

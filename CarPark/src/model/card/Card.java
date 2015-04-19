@@ -1,12 +1,16 @@
 package model.card;
 
+import model.state.CardState;
+
 public abstract class Card {
 
     protected int id;
     protected double account = 0;
+    protected CardState state;
 
     public Card(int id) {
         this.id = id;
+        this.state = CardState.available;
     }
 
     /**
@@ -42,5 +46,13 @@ public abstract class Card {
 
     public void setAccount(double account) {
         this.account = account;
+    }
+
+    public CardState getState() {
+        return state;
+    }
+
+    public void setState(CardState state) {
+        this.state = state;
     }
 }

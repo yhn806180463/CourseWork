@@ -3,6 +3,7 @@ package model.car;
 import java.util.Date;
 import model.card.Card;
 import model.state.CarState;
+import model.state.CardState;
 
 public abstract class Car<T extends Card> {
 
@@ -15,6 +16,7 @@ public abstract class Car<T extends Card> {
         if (card != null) {
             this.card = card;
             this.state = CarState.regist;
+            card.setState(CardState.using);
         }
     }
 

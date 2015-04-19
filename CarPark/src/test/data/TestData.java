@@ -7,36 +7,31 @@ import java.util.Date;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import model.state.PayCashType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import test.model.TestModel;
 
-public class CarData {
+public class TestData {
 
     public static List<TestModel> readCarData() {
         List<TestModel> modelList = new ArrayList<>();
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder bulder = factory.newDocumentBuilder();
-            Document doc = bulder.parse(CarData.class.getClassLoader().getResourceAsStream("main/data/CarData.xml"));
+            Document doc = bulder.parse(TestData.class.getClassLoader().getResourceAsStream("main/data/TestData.xml"));
             NodeList carNodes = doc.getDocumentElement().getChildNodes();
             for (int loop = 0; loop < carNodes.getLength(); loop++) {
                 Node carNode = carNodes.item(loop);
                 NodeList carParam = carNode.getChildNodes();
                 TestModel carModel = new TestModel();
-                if (carNode.getNodeName().equals("PublicCar")) {
-                    carModel.setType("PublicCar");
-                    carModel.setAccount(Double.valueOf(getValueByName(carParam, "Account")));
-                    carModel.setEnterTime(parseString(getValueByName(carParam, "EnterTime")));
-                    carModel.setLeaveTime(parseString(getValueByName(carParam, "LeaveTime")));
-                    modelList.add(carModel);
-                } else if (carNode.getNodeName().equals("StaffCar")) {
-                    carModel.setType("StaffCar");
-                    carModel.setEnterTime(parseString(getValueByName(carParam, "EnterTime")));
-                    carModel.setLeaveTime(parseString(getValueByName(carParam, "LeaveTime")));
-                    modelList.add(carModel);
-                }
+                carModel.setType(getValueByName(carParam, "type"));
+                carModel.setAccount(Double.valueOf(getValueByName(carParam, "account")));
+                carModel.setEnterTime(parseString(getValueByName(carParam, "enterTime")));
+                carModel.setLeaveTime(parseString(getValueByName(carParam, "leaveTime")));
+                carModel.setPays(parseCash(getValueByName(carParam, "pay")));
+                modelList.add(carModel);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -47,6 +42,27 @@ public class CarData {
     private static Date parseString(String string) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return format.parse(string);
+    }
+
+    private static List<PayCashType> parseCash(String string) {
+        List<PayCashType> payCashs = new ArrayList<>();
+        String[] cashs = string.split(",");
+        for (String cash : cashs) {
+            switch (cash) {
+                case "0.5":
+                    payCashs.add(PayCashType.FIFTY);
+                    break;
+                case "1":
+                    payCashs.add(PayCashType.ONE);
+                    break;
+                case "2":
+                    payCashs.add(PayCashType.TWO);
+                    break;
+                default:
+                    break;
+            }
+        }
+        return payCashs;
     }
 
     private static String getValueByName(NodeList nodeList, String nodeName) {

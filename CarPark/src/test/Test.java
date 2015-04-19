@@ -2,16 +2,13 @@ package test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ArrayBlockingQueue;
 import javax.swing.JFrame;
-import test.data.CarData;
-import test.model.TestModel;
 import main.view.CarParkUI;
-import model.car.Car;
 import model.car.PublicCar;
-import model.card.Card;
 import model.card.PublicCard;
 import model.state.PayCashType;
+import test.data.TestData;
+import test.model.TestModel;
 import control.card.PublicCardControl;
 import control.card.StaffCardControl;
 import control.facility.EntranceControl;
@@ -55,6 +52,6 @@ public class Test {
     }
 
     public static void carDataTest() {
-        List<TestModel> list = CarData.readCarData();
+        List<TestModel> list = TestData.readCarData();
     }
 }

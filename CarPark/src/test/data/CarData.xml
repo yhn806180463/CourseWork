@@ -6,7 +6,7 @@
 		<LeaveTime>2015/4/15 16:20:30</LeaveTime>
 	</PublicCar>
 	<StaffCar>
-		<CardId>1</CardId>
+		<CardId>2000</CardId>
 		<Account>2000</Account>
 		<EnterTime>2015/4/15 16:20:30</EnterTime>
 		<LeaveTime>2015/4/15 16:20:30</LeaveTime>

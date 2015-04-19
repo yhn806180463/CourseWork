@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import javax.swing.JFrame;
-import main.data.CarData;
+import test.data.CarData;
+import test.model.TestModel;
 import main.view.CarParkUI;
 import model.car.Car;
 import model.car.PublicCar;
@@ -54,6 +55,6 @@ public class Test {
     }
 
     public static void carDataTest() {
-        List<Car<? extends Card>> list = CarData.readCarData();
+        List<TestModel> list = CarData.readCarData();
     }
 }

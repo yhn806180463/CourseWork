@@ -6,7 +6,7 @@ import model.card.PublicCard;
 public class PublicCardControl extends CardControl<PublicCard> {
 
     /**
-     * create spaces, entrance, payStation, exit, ticketCards and campusCards;
+     * create public cards
      */
     public PublicCardControl() {
         for (int i = Integer.valueOf(Config.getProperty("card.public.start")); i <= Integer.valueOf(Config.getProperty("card.public.end")); i++) {

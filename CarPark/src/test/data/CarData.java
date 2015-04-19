@@ -1,4 +1,4 @@
-package main.data;
+package test.data;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -7,18 +7,15 @@ import java.util.Date;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import model.car.Car;
-import model.car.PublicCar;
-import model.card.Card;
-import model.card.PublicCard;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import test.model.TestModel;
 
 public class CarData {
 
-    public static List<Car<? extends Card>> readCarData() {
-        List<Car<? extends Card>> carList = new ArrayList<>();
+    public static List<TestModel> readCarData() {
+        List<TestModel> modelList = new ArrayList<>();
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder bulder = factory.newDocumentBuilder();
@@ -27,25 +24,24 @@ public class CarData {
             for (int loop = 0; loop < carNodes.getLength(); loop++) {
                 Node carNode = carNodes.item(loop);
                 NodeList carParam = carNode.getChildNodes();
+                TestModel carModel = new TestModel();
                 if (carNode.getNodeName().equals("PublicCar")) {
-                    PublicCard card = new PublicCard(Integer.valueOf(getValueByName(carParam, "CardId")));
-                    card.setAccount(Double.valueOf(getValueByName(carParam, "Account")));
-                    PublicCar car = new PublicCar(card);
-                    car.setEnterTime(parseString(getValueByName(carParam, "EnterTime")));
-                    car.setLeaveTime(parseString(getValueByName(carParam, "LeaveTime")));
-                    carList.add(car);
+                    carModel.setType("PublicCar");
+                    carModel.setAccount(Double.valueOf(getValueByName(carParam, "Account")));
+                    carModel.setEnterTime(parseString(getValueByName(carParam, "EnterTime")));
+                    carModel.setLeaveTime(parseString(getValueByName(carParam, "LeaveTime")));
+                    modelList.add(carModel);
                 } else if (carNode.getNodeName().equals("StaffCar")) {
-                    PublicCard card = new PublicCard(Integer.valueOf(getValueByName(carParam, "CardId")));
-                    PublicCar car = new PublicCar(card);
-                    car.setEnterTime(parseString(getValueByName(carParam, "EnterTime")));
-                    car.setLeaveTime(parseString(getValueByName(carParam, "LeaveTime")));
-                    carList.add(car);
+                    carModel.setType("StaffCar");
+                    carModel.setEnterTime(parseString(getValueByName(carParam, "EnterTime")));
+                    carModel.setLeaveTime(parseString(getValueByName(carParam, "LeaveTime")));
+                    modelList.add(carModel);
                 }
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return carList;
+        return modelList;
     }
 
     private static Date parseString(String string) throws ParseException {

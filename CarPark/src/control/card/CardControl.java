@@ -1,7 +1,6 @@
 package control.card;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 import javax.swing.JTextArea;
 import main.view.SingletonModel;
@@ -12,19 +11,25 @@ public class CardControl<T extends Card> {
     protected Map<Integer, T> cards;
     protected JTextArea jTextArea = SingletonModel.MainControl.getTextArea();;
 
+    /**
+     * register a new card
+     * 
+     * @param id
+     * @param c
+     * @return boolean
+     */
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public boolean registCard(int id, Class t) {
+    public boolean registerCard(int id, Class c) {
         boolean sign = true;
-        if(isExist(id)){
+        if (isExist(id)) {
             sign = false;
         }
         try {
-            Constructor<T> constructor = t.getDeclaredConstructor(Integer.class);
+            Constructor<T> constructor = c.getDeclaredConstructor(Integer.class);
             cards.put(id, (T) constructor.newInstance(id));
-        } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException
-                 | IllegalArgumentException | InvocationTargetException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            sign= false;
+            sign = false;
         }
         return sign;
     }

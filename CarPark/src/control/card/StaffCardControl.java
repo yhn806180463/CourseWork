@@ -6,7 +6,7 @@ import model.card.StaffCard;
 public class StaffCardControl extends CardControl<StaffCard> {
 
     /**
-     * create spaces, entrance, payStation, exit, ticketCards and campusCards;
+     * create staff cards
      */
     public StaffCardControl() {
         for (int i = Integer.valueOf(Config.getProperty("card.staff.start")); i <= Integer.valueOf(Config.getProperty("card.staff.end")); i++) {

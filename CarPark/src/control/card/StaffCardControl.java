@@ -19,10 +19,13 @@ public class StaffCardControl extends CardControl<StaffCard> {
      * every staff pay bill
      * 
      */
-    public void staffPayBill() {
+    public void allStaffsPayBill() {
+        textShow("===> This month staffs need to pay <===");
         for (StaffCard card : cards) {
-            card.payBillByMonth();
-            textShow("The card:" + card.getId() + " should pay " + card.getMonthBill());
+            if (card.getMonthBill() != 0) {
+                textShow("The staff card:" + card.getId() + " should pay " + card.getMonthBill());
+                card.payBillByMonth();
+            }
         }
     }
 }

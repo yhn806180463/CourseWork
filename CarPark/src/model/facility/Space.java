@@ -2,6 +2,7 @@ package model.facility;
 
 import model.state.CarState;
 import model.state.FacilityState;
+import model.state.FacilityType;
 import model.car.Car;
 import model.card.Card;
 
@@ -11,6 +12,7 @@ public class Space extends AbstractFacility {
     private Car<? extends Card> car;
 
     public Space(int id) {
+        super(FacilityType.Space);
         this.id = id;
         open();
     }

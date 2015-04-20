@@ -6,10 +6,12 @@ import model.car.Car;
 import model.card.Card;
 import model.state.CarState;
 import model.state.FacilityState;
+import model.state.FacilityType;
 
 public class Entrance extends AbstractFacility {
 
     public Entrance(int id) {
+        super(FacilityType.Entrance);
         super.id = id;
     }
 

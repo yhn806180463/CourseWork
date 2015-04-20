@@ -6,6 +6,7 @@ import main.view.SingletonModel;
 import model.car.Car;
 import model.card.Card;
 import model.card.PublicCard;
+import model.card.StaffCard;
 import model.facility.PayStation;
 import model.state.PayCashType;
 
@@ -22,13 +23,17 @@ public class PayStationControl extends AbstractControl<PayStation> {
         // check only collect Public Car
         if (payStation.canDeal(car)) {
             if (car.getCard() instanceof PublicCard) {
-                textShow("pay station:" + payStation.getId() + " collect money "+pays);
+                textShow("==> Public card <==");
+                textShow("pay station:" + payStation.getId() + " collect money " + pays);
                 payStation.collect(pays);
                 payStation.deal(car);
                 textShow("card:" + car.getCard().getId() + " account:" + car.getCard().getAccount());
+            } else if (car.getCard() instanceof StaffCard) {
+                textShow("==> Staff card <==");
+                payStation.deal(car);
             }
+            textShow("------------");
         }
-        textShow("------------");
     }
 
     public void collect(List<PayCashType> cashList) {

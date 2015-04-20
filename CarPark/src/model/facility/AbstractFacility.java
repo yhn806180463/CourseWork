@@ -3,6 +3,7 @@ package model.facility;
 import model.car.Car;
 import model.card.Card;
 import model.state.FacilityState;
+import model.state.FacilityType;
 
 /**
  * 
@@ -11,6 +12,11 @@ public abstract class AbstractFacility {
 
     protected int id;
     protected FacilityState state;
+    protected FacilityType type;
+
+    protected AbstractFacility(FacilityType type) {
+        this.type = type;
+    }
 
     /**
      * this facility is available
@@ -44,5 +50,9 @@ public abstract class AbstractFacility {
 
     public FacilityState getState() {
         return state;
+    }
+
+    public FacilityType getType() {
+        return type;
     }
 }

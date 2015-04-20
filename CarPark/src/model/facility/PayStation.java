@@ -1,16 +1,17 @@
 package model.facility;
 
-import java.util.Date;
-import model.state.CarState;
 import model.car.Car;
 import model.car.PublicCar;
 import model.card.Card;
+import model.state.CarState;
+import model.state.FacilityType;
 
 public class PayStation extends AbstractFacility {
 
     private double money;
 
     public PayStation(int id) {
+        super(FacilityType.PayStation);
         super.id = id;
     }
 

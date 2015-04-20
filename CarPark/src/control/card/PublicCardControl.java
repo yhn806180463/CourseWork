@@ -21,7 +21,7 @@ public class PublicCardControl extends CardControl<PublicCard> {
      * 
      * @return T
      */
-    public PublicCard getAvailableCard() {
+    public PublicCard getAnAvailableCard() {
         for (PublicCard card : cards) {
             if (card.getState() == CardState.available) {
                 textShow("issue public card:" + card.getId());
@@ -29,5 +29,11 @@ public class PublicCardControl extends CardControl<PublicCard> {
             }
         }
         return null;
+    }
+
+    public void showDetail() {
+        textShow("==> Public Card Datail <==");
+        textShow("Total amount:" + cards.size());
+        textShow("Available amount:" + getAvailableAmount());
     }
 }

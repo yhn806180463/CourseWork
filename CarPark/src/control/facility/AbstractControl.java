@@ -8,6 +8,7 @@ import model.car.Car;
 import model.card.Card;
 import model.facility.AbstractFacility;
 import model.state.FacilityState;
+import model.state.FacilityType;
 
 public abstract class AbstractControl<T extends AbstractFacility> {
 
@@ -15,6 +16,7 @@ public abstract class AbstractControl<T extends AbstractFacility> {
     protected JTextArea jTextArea;
     // the list of special facilities in park
     protected List<T> facilities = new ArrayList<>();
+    protected FacilityType type;
 
     /**
      * construct to create a list of special facility
@@ -26,12 +28,16 @@ public abstract class AbstractControl<T extends AbstractFacility> {
     @SuppressWarnings({ "unchecked", "rawtypes" })
     protected AbstractControl(JTextArea jTextArea, int amount, Class cla) {
         this.jTextArea = jTextArea;
+        T t = null;
         try {
             for (int i = 1; i <= amount; i++) {
                 Constructor<T> constructor = cla.getDeclaredConstructor(int.class);
-                facilities.add(constructor.newInstance(i));
+                t = constructor.newInstance(i);
+                facilities.add(t);
             }
+            this.type = t.getType();
             openAll();
+            showDetail();
         } catch (Exception e) {
             System.out.println("create facility control error");
         }
@@ -101,7 +107,7 @@ public abstract class AbstractControl<T extends AbstractFacility> {
     /**
      * clear all the text
      */
-    public void textShow() {
+    protected void textShow() {
         jTextArea.setText("");
     }
 
@@ -121,16 +127,24 @@ public abstract class AbstractControl<T extends AbstractFacility> {
      * @return void
      */
     public void showDetail() {
-        textShow("==>Datail");
+        textShow("==> " + type + " Datail<==");
         textShow("Total amount:" + getTotalAmount());
         textShow("Available amount:" + getAvailableAmount());
+        StringBuffer availableIds = new StringBuffer();
+        StringBuffer unAvailableIds = new StringBuffer();
         for (T facility : facilities) {
             if (facility.getState() == FacilityState.available) {
-                textShow("The id:" + facility.getId() + " is available");
+                availableIds.append(facility.getId() + " ");
             } else {
-                textShow("The id:" + facility.getId() + " is not available");
+                unAvailableIds.append(facility.getId() + " ");
             }
         }
-        textShow("<==");
+        if (availableIds.length() != 0) {
+            textShow("The " + type + " id:" + availableIds + " is available");
+        }
+        if (unAvailableIds.length() != 0) {
+            textShow("The " + type + " id:" + unAvailableIds + " is not available");
+        }
+        textShow("=========");
     }
 }

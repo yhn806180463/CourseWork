@@ -2,11 +2,12 @@ package model.card;
 
 import java.util.Date;
 import java.util.HashSet;
+import util.DateUtil;
 
 public class StaffCard extends Card {
 
     // the dates should pay
-    private HashSet<Date> dates;
+    private HashSet<Date> dates = new HashSet<>();
     private double monthBill = 0;
 
     public StaffCard(int id) {
@@ -15,7 +16,7 @@ public class StaffCard extends Card {
 
     @Override
     public boolean pay(Double bill) {
-        dates.add(new Date());
+        dates.add(DateUtil.getSystemDate());
         monthBill += bill;
         return true;
     }

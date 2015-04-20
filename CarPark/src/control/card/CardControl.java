@@ -50,7 +50,12 @@ public class CardControl<T extends Card> {
     }
 
     public T getCard(int id) {
-        return cards.get(id);
+        for (T card : cards) {
+            if (card.getId() == id) {
+                return card;
+            }
+        }
+        return null;
     }
 
     /**

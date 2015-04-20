@@ -1,6 +1,7 @@
 package model.facility;
 
 import java.util.Date;
+import util.DateUtil;
 import model.car.Car;
 import model.card.Card;
 import model.state.CarState;
@@ -28,6 +29,6 @@ public class Entrance extends AbstractFacility {
 
     @Override
     public boolean canDeal(Car<? extends Card> car) {
-        return car.canPark(new Date()) && car.getState() == CarState.regist;
+        return car.canPark(DateUtil.getSystemDate()) && car.getState() == CarState.regist;
     }
 }

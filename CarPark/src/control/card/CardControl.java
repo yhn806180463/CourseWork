@@ -1,14 +1,16 @@
 package control.card;
 
 import java.lang.reflect.Constructor;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JTextArea;
 import main.view.SingletonModel;
 import model.card.Card;
+import model.state.CardState;
 
 public class CardControl<T extends Card> {
 
-    protected Map<Integer, T> cards;
+    protected List<T> cards = new ArrayList<>();
     protected JTextArea jTextArea = SingletonModel.MainControl.getTextArea();;
 
     /**
@@ -26,9 +28,9 @@ public class CardControl<T extends Card> {
         }
         try {
             Constructor<T> constructor = c.getDeclaredConstructor(Integer.class);
-            cards.put(id, (T) constructor.newInstance(id));
+            cards.add((T) constructor.newInstance(id));
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("create card control error");
             sign = false;
         }
         return sign;
@@ -49,6 +51,21 @@ public class CardControl<T extends Card> {
 
     public T getCard(int id) {
         return cards.get(id);
+    }
+
+    /**
+     * count the amount of available card
+     * 
+     * @return int
+     */
+    public int getAvailableAmount() {
+        int amount = cards.size();
+        for (T card : cards) {
+            if (card.getState() != CardState.available) {
+                amount--;
+            }
+        }
+        return amount;
     }
 
     protected void textShow(String string) {

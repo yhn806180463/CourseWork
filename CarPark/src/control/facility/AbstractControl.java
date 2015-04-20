@@ -1,6 +1,7 @@
 package control.facility;
 
 import java.lang.reflect.Constructor;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTextArea;
 import model.car.Car;
@@ -13,7 +14,7 @@ public abstract class AbstractControl<T extends AbstractFacility> {
     // the view to show info
     protected JTextArea jTextArea;
     // the list of special facilities in park
-    protected List<T> facilities;
+    protected List<T> facilities = new ArrayList<>();
 
     /**
      * construct to create a list of special facility
@@ -28,12 +29,12 @@ public abstract class AbstractControl<T extends AbstractFacility> {
         try {
             for (int i = 1; i <= amount; i++) {
                 Constructor<T> constructor = cla.getDeclaredConstructor(int.class);
-                facilities.add((T) constructor.newInstance(i));
+                facilities.add(constructor.newInstance(i));
             }
+            openAll();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("create facility control error");
         }
-        openAll();
     }
 
     /**
@@ -100,7 +101,7 @@ public abstract class AbstractControl<T extends AbstractFacility> {
     /**
      * clear all the text
      */
-    public void textClear() {
+    public void textShow() {
         jTextArea.setText("");
     }
 

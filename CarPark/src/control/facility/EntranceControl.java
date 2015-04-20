@@ -17,9 +17,10 @@ public class EntranceControl extends AbstractControl<Entrance> {
         // check available of car
         if (entrance.canDeal(car)) {
             entrance.deal(car);
-            textShow("Entrance open barrier,car:" + car.getCard().getId());
+            textShow("Entrance:" + entrance.getId() + " open barrier,card id:" + car.getCard().getId());
         } else {
             textShow("this car can't park,card id: " + car.getCard().getId());
         }
+        textShow("------------");
     }
 }

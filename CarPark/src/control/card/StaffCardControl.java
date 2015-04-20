@@ -8,10 +8,10 @@ public class StaffCardControl extends CardControl<StaffCard> {
     /**
      * create staff cards
      */
-    public StaffCardControl() {  
+    public StaffCardControl() {
         for (int i = Integer.valueOf(Config.getProperty("card.staff.start")); i <= Integer.valueOf(Config.getProperty("card.staff.end")); i++) {
             StaffCard card = new StaffCard(i);
-            cards.put(i, card);
+            cards.add(card);
         }
     }
 
@@ -20,7 +20,7 @@ public class StaffCardControl extends CardControl<StaffCard> {
      * 
      */
     public void staffPayBill() {
-        for (StaffCard card : cards.values()) {
+        for (StaffCard card : cards) {
             card.payBillByMonth();
             textShow("The card:" + card.getId() + " should pay " + card.getMonthBill());
         }

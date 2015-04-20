@@ -22,11 +22,13 @@ public class PayStationControl extends AbstractControl<PayStation> {
         // check only collect Public Car
         if (payStation.canDeal(car)) {
             if (car.getCard() instanceof PublicCard) {
+                textShow("pay station:" + payStation.getId() + " collect money "+pays);
                 payStation.collect(pays);
                 payStation.deal(car);
                 textShow("card:" + car.getCard().getId() + " account:" + car.getCard().getAccount());
             }
         }
+        textShow("------------");
     }
 
     public void collect(List<PayCashType> cashList) {
@@ -34,6 +36,5 @@ public class PayStationControl extends AbstractControl<PayStation> {
         for (PayCashType cash : cashList) {
             pays += cash.getMoney();
         }
-        textShow("collect total cash:" + pays);
     }
 }

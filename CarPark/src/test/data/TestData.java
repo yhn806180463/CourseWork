@@ -20,31 +20,41 @@ public class TestData {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder bulder = factory.newDocumentBuilder();
-            Document doc = bulder.parse(TestData.class.getClassLoader().getResourceAsStream("main/data/TestData.xml"));
+            Document doc = bulder.parse(TestData.class.getClassLoader().getResourceAsStream("test/data/TestData.xml"));
             NodeList carNodes = doc.getDocumentElement().getChildNodes();
             for (int loop = 0; loop < carNodes.getLength(); loop++) {
                 Node carNode = carNodes.item(loop);
-                NodeList carParam = carNode.getChildNodes();
-                TestModel carModel = new TestModel();
-                carModel.setType(getValueByName(carParam, "type"));
-                carModel.setAccount(Double.valueOf(getValueByName(carParam, "account")));
-                carModel.setEnterTime(parseString(getValueByName(carParam, "enterTime")));
-                carModel.setLeaveTime(parseString(getValueByName(carParam, "leaveTime")));
-                carModel.setPays(parseCash(getValueByName(carParam, "pay")));
-                modelList.add(carModel);
+                if (carNode.getNodeName().equals("car")) {
+                    NodeList carParam = carNode.getChildNodes();
+                    TestModel carModel = new TestModel();
+                    String cardId = getValueByName(carParam, "cardId");
+                    if (cardId != null) {
+                        carModel.setCardId(Integer.valueOf(cardId));
+                    }
+                    String account = getValueByName(carParam, "account");
+                    carModel.setAccount(account == null ? 0 : Double.valueOf(account));
+                    carModel.setType(getValueByName(carParam, "type"));
+                    carModel.setEnterTime(parseString(getValueByName(carParam, "enterTime")));
+                    carModel.setLeaveTime(parseString(getValueByName(carParam, "leaveTime")));
+                    carModel.setPays(parseCash(getValueByName(carParam, "pay")));
+                    modelList.add(carModel);
+                }
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("create test data error" + e);
         }
         return modelList;
     }
 
     private static Date parseString(String string) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return format.parse(string);
+        return string == null ? null : format.parse(string);
     }
 
     private static List<PayCashType> parseCash(String string) {
+        if (string == null) {
+            return null;
+        }
         List<PayCashType> payCashs = new ArrayList<>();
         String[] cashs = string.split(",");
         for (String cash : cashs) {
@@ -69,8 +79,10 @@ public class TestData {
         String value = null;
         for (int loop = 0; loop < nodeList.getLength(); loop++) {
             Node node = nodeList.item(loop);
-            if (node.getNodeName().equals(nodeName)) {
-                value = node.getNodeValue();
+            if (node.getNodeName().equals(nodeName) && node.getNodeType() == Node.ELEMENT_NODE) {
+                if (node.hasChildNodes()) {
+                    value = node.getFirstChild().getNodeValue();
+                }
             }
         }
         return value;

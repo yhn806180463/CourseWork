@@ -17,9 +17,10 @@ public class ExitControl extends AbstractControl<Exit> {
         // check the payment
         if (exit.canDeal(car)) {
             exit.deal(car);
-            textShow("Exit open barrier,car:" + car.getCard().getId());
+            textShow("Exit:" + exit.getId() + " open barrier,card id:" + car.getCard().getId());
         } else {
-            textShow("Can't exit,didn't pay,car " + car.getCard().getId());
+            textShow("Can't exit,didn't pay,card id " + car.getCard().getId());
         }
+        textShow("------------");
     }
 }

@@ -11,6 +11,9 @@ public class PublicCar extends Car<PublicCard> {
 
     @Override
     public double countCost() {
+        if (leaveTime == null) {
+            leaveTime = new Date();
+        }
         long liveTime = leaveTime.getTime() - enterTime.getTime();
         int hour = (int) (liveTime / 60 / 60 / 1000);
         switch (hour / 2) {

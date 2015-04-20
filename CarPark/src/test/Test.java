@@ -5,10 +5,13 @@ import java.util.List;
 import javax.swing.JFrame;
 import main.view.CarParkUI;
 import model.car.PublicCar;
+import model.car.StaffCar;
 import model.card.PublicCard;
+import model.card.StaffCard;
 import model.state.PayCashType;
 import test.data.TestData;
 import test.model.TestModel;
+import util.DateUtil;
 import control.card.PublicCardControl;
 import control.card.StaffCardControl;
 import control.facility.EntranceControl;
@@ -18,11 +21,11 @@ import control.facility.SpaceControl;
 
 public class Test {
 
-    public static void main(String[] arg) {
-        carDataTest();
+    public static void main(String[] arg) throws InterruptedException {
+        uiTest();
     }
 
-    public static void uiTest(String[] arg) throws InterruptedException {
+    public static void uiTest() throws InterruptedException {
         //
         CarParkUI ui = new CarParkUI();
         ui.setSize(600, 700);
@@ -35,23 +38,36 @@ public class Test {
         SpaceControl spaceControl = new SpaceControl();
         StaffCardControl staffCardControl = new StaffCardControl();
         PublicCardControl publicCardControl = new PublicCardControl();
-        //
-        int id = 1;
-        List<PayCashType> cashs = new ArrayList<>();
-        cashs.add(PayCashType.FIFTY);
-        cashs.add(PayCashType.ONE);
-        cashs.add(PayCashType.TWO);
-        //
-        PublicCard card = publicCardControl.getCard(id);
-        PublicCar car = new PublicCar(card);
-        entranceControl.through(car);
-        spaceControl.through(car);
-        payStationControl.collect(cashs);
-        payStationControl.through(car);
-        exitControl.through(car);
+        DateUtil.setSystemDate("2015-4-19");
+        List<TestModel> list = TestData.readCarData();
+        for (TestModel testModel : list) {
+            if (testModel.getType().equals("PublicCar")) {
+                PublicCard card = publicCardControl.getAvailableCard();
+                PublicCar car = new PublicCar(card);
+                car.setEnterTime(testModel.getEnterTime());
+                car.setLeaveTime(testModel.getLeaveTime());
+                entranceControl.through(car);
+                spaceControl.through(car);
+                payStationControl.collect(testModel.getPays());
+                payStationControl.through(car);
+                exitControl.through(car);
+            } else if (testModel.getType().equals("StaffCar")) {
+                StaffCard card = new StaffCard(testModel.getCardId());
+                card.setAccount(testModel.getAccount());
+                StaffCar car = new StaffCar(card);
+                car.setEnterTime(testModel.getEnterTime());
+                car.setLeaveTime(testModel.getLeaveTime());
+                entranceControl.through(car);
+                spaceControl.through(car);
+                exitControl.through(car);
+            }
+        }
     }
 
     public static void carDataTest() {
         List<TestModel> list = TestData.readCarData();
+        for (TestModel testModel : list) {
+            if (testModel.getType().equals("PublicCar")) {} else if (testModel.getType().equals("StaffCar")) {}
+        }
     }
 }

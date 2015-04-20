@@ -16,7 +16,8 @@ public class SpaceControl extends AbstractControl<Space> {
     protected void dealWithCar(Space space, Car<? extends Card> car) {
         if (space.canDeal(car)) {
             space.deal(car);
-            textShow("car:" + car.getCard().getId() + " park in the space:" + space.getId());
+            textShow("card id:" + car.getCard().getId() + " park in the space:" + space.getId());
         }
+        textShow("------------");
     }
 }

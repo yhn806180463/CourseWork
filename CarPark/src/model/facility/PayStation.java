@@ -3,6 +3,7 @@ package model.facility;
 import java.util.Date;
 import model.state.CarState;
 import model.car.Car;
+import model.car.PublicCar;
 import model.card.Card;
 
 public class PayStation extends AbstractFacility {
@@ -25,8 +26,9 @@ public class PayStation extends AbstractFacility {
 
     @Override
     public void deal(Car<? extends Card> car) {
-        car.getCard().setAccount(money);
-        car.setLeaveTime(new Date());
+        if (car instanceof PublicCar) {
+            car.getCard().setAccount(money);
+        }
         car.setState(CarState.unpark);
         car.payCost();
     }

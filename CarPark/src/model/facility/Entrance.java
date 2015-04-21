@@ -2,11 +2,11 @@ package model.facility;
 
 import java.util.Date;
 import util.DateUtil;
+import util.state.CarState;
+import util.state.FacilityState;
+import util.state.FacilityType;
 import model.car.Car;
 import model.card.Card;
-import model.state.CarState;
-import model.state.FacilityState;
-import model.state.FacilityType;
 
 public class Entrance extends AbstractFacility {
 

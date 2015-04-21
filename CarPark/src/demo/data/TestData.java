@@ -1,4 +1,4 @@
-package test.data;
+package demo.data;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -7,11 +7,10 @@ import java.util.Date;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import model.state.PayCashType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import test.model.TestModel;
+import util.state.PayCashType;
 
 public class TestData {
 

@@ -4,9 +4,9 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTextArea;
+import util.state.CardState;
 import main.view.SingletonModel;
 import model.card.Card;
-import model.state.CardState;
 
 public class CardControl<T extends Card> {
 

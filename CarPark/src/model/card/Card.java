@@ -1,6 +1,6 @@
 package model.card;
 
-import model.state.CardState;
+import util.state.CardState;
 
 public abstract class Card {
 

@@ -1,9 +1,9 @@
 package model.facility;
 
+import util.state.FacilityState;
+import util.state.FacilityType;
 import model.car.Car;
 import model.card.Card;
-import model.state.FacilityState;
-import model.state.FacilityType;
 
 /**
  * 

@@ -1,10 +1,10 @@
 package model.facility;
 
+import util.state.CarState;
+import util.state.FacilityType;
 import model.car.Car;
 import model.car.PublicCar;
 import model.card.Card;
-import model.state.CarState;
-import model.state.FacilityType;
 
 public class PayStation extends AbstractFacility {
 

@@ -1,4 +1,4 @@
-package test;
+package demo;
 
 import java.util.List;
 import javax.swing.JFrame;
@@ -7,8 +7,6 @@ import model.car.PublicCar;
 import model.car.StaffCar;
 import model.card.PublicCard;
 import model.card.StaffCard;
-import test.data.TestData;
-import test.model.TestModel;
 import util.DateUtil;
 import control.card.PublicCardControl;
 import control.card.StaffCardControl;
@@ -16,8 +14,10 @@ import control.facility.EntranceControl;
 import control.facility.ExitControl;
 import control.facility.PayStationControl;
 import control.facility.SpaceControl;
+import demo.data.TestData;
+import demo.data.TestModel;
 
-public class Test {
+public class Demo {
 
     public static void main(String[] arg) throws InterruptedException {
         uiTest();
@@ -64,10 +64,10 @@ public class Test {
                 exitControl.through(car);
             }
         }
-        //test others
-        //staff cards pay bill by month
+        // test others
+        // staff cards pay bill by month
         staffCardControl.allStaffsPayBill();
-        //public cards show detail
+        // public cards show detail
         publicCardControl.showDetail();
     }
 }

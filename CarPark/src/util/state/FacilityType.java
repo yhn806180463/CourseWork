@@ -1,4 +1,4 @@
-package model.state;
+package util.state;
 
 public enum FacilityType {
     Entrance("Entrance"), Exit("Exit"), PayStation("PayStation"), Space("Space");

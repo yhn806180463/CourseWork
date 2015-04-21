@@ -1,4 +1,4 @@
-package model.state;
+package util.state;
 
 public enum PayCashType {
     FIFTY(0.5), ONE(1), TWO(2);

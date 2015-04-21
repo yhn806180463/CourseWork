@@ -1,8 +1,8 @@
-package test.model;
+package demo.data;
 
 import java.util.Date;
 import java.util.List;
-import model.state.PayCashType;
+import util.state.PayCashType;
 
 public class TestModel {
 

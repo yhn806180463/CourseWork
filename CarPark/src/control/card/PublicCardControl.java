@@ -1,8 +1,8 @@
 package control.card;
 
+import util.state.CardState;
 import main.config.Config;
 import model.card.PublicCard;
-import model.state.CardState;
 
 public class PublicCardControl extends CardControl<PublicCard> {
 

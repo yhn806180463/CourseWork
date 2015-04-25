@@ -19,7 +19,7 @@ public class TestData {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder bulder = factory.newDocumentBuilder();
-            Document doc = bulder.parse(TestData.class.getClassLoader().getResourceAsStream("test/data/TestData.xml"));
+            Document doc = bulder.parse(TestData.class.getClassLoader().getResourceAsStream("demo/data/TestData.xml"));
             NodeList carNodes = doc.getDocumentElement().getChildNodes();
             for (int loop = 0; loop < carNodes.getLength(); loop++) {
                 Node carNode = carNodes.item(loop);

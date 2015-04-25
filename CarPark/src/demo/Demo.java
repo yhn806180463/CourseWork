@@ -20,10 +20,10 @@ import demo.data.TestModel;
 public class Demo {
 
     public static void main(String[] arg) throws InterruptedException {
-        uiTest();
+        run();
     }
 
-    public static void uiTest() throws InterruptedException {
+    public static void run() throws InterruptedException {
         // create UI
         CarParkUI ui = new CarParkUI();
         ui.setSize(600, 700);

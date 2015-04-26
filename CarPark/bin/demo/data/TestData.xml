@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cars>
+	<car>
+		<type>PublicCar</type>
+		<enterTime>2015-4-15 16:20:30</enterTime>
+		<leaveTime>2015-4-15 16:20:30</leaveTime>
+		<pay>0.5,1,2</pay>
+	</car>
+	<car>
+		<type>StaffCar</type>
+		<cardId>2000</cardId>
+		<account>2000</account>
+		<enterTime>2015-4-15 16:20:30</enterTime>
+		<leaveTime>2015-4-15 16:20:30</leaveTime>
+	</car>
+</cars>

@@ -31,7 +31,7 @@ public class PublicCardControl extends CardControl<PublicCard> {
         return null;
     }
 
-    public void showDetail() {
+    public void showDetail() {//button
         textShow("==> Public Card Datail <==");
         textShow("Total amount:" + cards.size());
         textShow("Available amount:" + getAvailableAmount());
